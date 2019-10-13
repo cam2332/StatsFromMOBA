@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
 
     dataBinding {
-        enabled= true
+        enabled = true
     }
 
     defaultConfig {
