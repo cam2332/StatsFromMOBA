@@ -1,6 +1,7 @@
 package com.example.statsfrommoba;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -47,13 +48,18 @@ public class SearchPlayersActivity extends AppCompatActivity {
         arrayList.add(new StringPair("NoobPlayer11", "15"));
         arrayList.add(new StringPair("RockPlayer12", "11"));
 
-        ListView listView = (ListView) findViewById(R.id.list_view);
+        final ListView listView = (ListView) findViewById(R.id.list_view);
         adapter = new MyCustomListAdapter(arrayList);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(SearchPlayersActivity.this, "" + position, Toast.LENGTH_SHORT).show();
+                Toast.makeText(SearchPlayersActivity.this, "" + ((StringPair) listView.getItemAtPosition(position)).value, Toast.LENGTH_SHORT).show();
+
+                Intent playerProfileScreen = new Intent(SearchPlayersActivity.this,PlayerProfileActivity.class);
+                playerProfileScreen.putExtra("player_name", ((StringPair) listView.getItemAtPosition(position)).key);
+                playerProfileScreen.putExtra("player_rank", ((StringPair) listView.getItemAtPosition(position)).value);
+                startActivity(playerProfileScreen);
             }
         });
 

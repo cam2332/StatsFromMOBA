@@ -6,4 +6,141 @@
     android:layout_height="match_parent"
     tools:context=".PlayerProfileActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/top_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#101010"
+        android:backgroundTint="#0277BD"
+        android:elevation="4dp"
+        android:padding="0dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:titleTextColor="#ffffff"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/two_color_horizontal_background"
+                android:orientation="vertical">
+
+                <com.example.statsfrommoba.HexagonMaskView
+                    android:id="@+id/image"
+                    android:layout_width="match_parent"
+                    android:layout_height="207dp"
+                    android:src="@drawable/twin_icon512"
+                    android:layout_margin="100dp"
+                    android:cropToPadding="false"
+                    android:scaleType="centerInside"
+                    app:hexagonBorderColor="#FFFFFF"
+                    app:hexagonInnerBackgroundColor="#FFFFFF"/>
+                <!--
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="207dp"
+                    android:layout_margin="100dp"
+                    android:cropToPadding="false"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/twin_icon512" />
+                 -->
+
+                <TextView
+                    android:id="@+id/textView_playerRank"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-40dp"
+                    android:layout_weight="1"
+                    android:text="TextView"
+                    android:textAlignment="center"
+                    android:textColor="#6F6F6F"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/textView_playerName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-75dp"
+                    android:layout_weight="1"
+                    android:text="TextView"
+                    android:textAlignment="center"
+                    android:textSize="30sp" />
+
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#ffffff"
+                    android:backgroundTint="#FFFFFF"
+                    android:orientation="vertical"
+                    android:paddingTop="50dp">
+
+                    <com.example.statsfrommoba.HexagonMaskView
+                        android:id="@+id/image2"
+                        android:layout_width="match_parent"
+                        android:layout_height="130dp"
+                        android:cropToPadding="false"
+                        android:foreground="#ffffff"
+                        android:foregroundTint="#ffffff"
+                        android:scaleType="centerInside"
+                        app:hexagonBorderColor="@color/colorBehindPlayerProfileTop"
+                        app:hexagonInnerBackgroundColor="@color/colorBehindPlayerProfileBottom" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView_playerLvl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="95dp"
+                    android:scaleX="1.5"
+                    android:scaleY="1.5"
+                    android:text="24"
+                    android:textAlignment="center"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="190dp"
+                    android:text="Level"
+                    android:textAlignment="center"
+                    android:textSize="24sp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="230dp"
+                    android:layout_marginRight="20dp"
+                    android:background="#AFAFAF"
+                    android:backgroundTint="#AFAFAF"
+                    android:progress="70"
+                    android:scaleY="2" />
+            </FrameLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
 </android.support.constraint.ConstraintLayout>
