@@ -13,14 +13,14 @@ import android.databinding.DataBindingUtil;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyCustomListAdapter extends BaseAdapter implements Filterable {
+public class PlayerInfoSearchResultListAdapter extends BaseAdapter implements Filterable {
 
     ArrayList<StringPair> mData = new ArrayList();
     ArrayList<StringPair> mDataFilerList = new ArrayList();
     ValueFilter valueFilter;
     private LayoutInflater mInflater;
 
-    public MyCustomListAdapter(ArrayList<StringPair> items) {
+    public PlayerInfoSearchResultListAdapter(ArrayList<StringPair> items) {
         mData = items;
         mDataFilerList = items;
     }
