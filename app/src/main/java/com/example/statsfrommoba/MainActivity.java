@@ -21,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
     PlayerInfoSearchResultListAdapter adapter;
     ArrayList<StringPair> arrayList = new ArrayList<>();
 
+    public static Connect con;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +30,18 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.top_toolbar);
         setSupportActionBar(myToolbar);
+
+        /*
+            JDBC
+         */
+        con = new Connect();
+        if (con.getConnection() != null){
+            Toast.makeText(MainActivity.this, "Connnected to DB", Toast.LENGTH_LONG).show();
+        }
+        else
+        {
+            Toast.makeText(MainActivity.this, "Not connnected to DB", Toast.LENGTH_LONG).show();
+        }
 
         //recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 

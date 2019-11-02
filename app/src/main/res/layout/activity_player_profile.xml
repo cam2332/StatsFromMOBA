@@ -20,7 +20,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:titleTextColor="#ffffff"/>
+        app:titleTextColor="#ffffff"
+        app:title="Profile"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -37,16 +38,27 @@
                 android:background="@drawable/two_color_horizontal_background"
                 android:orientation="vertical">
 
+                <de.hdodenhof.circleimageview.CircleImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/profile_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="207dp"
+                    android:layout_margin="100dp"
+                    android:src="@drawable/twin_icon512"
+                    app:civ_border_color="@color/colorBehindPlayerProfileTop"
+                    app:civ_border_width="8dp" />
+                <!--
                 <com.example.statsfrommoba.HexagonMaskView
                     android:id="@+id/image"
                     android:layout_width="match_parent"
                     android:layout_height="207dp"
-                    android:src="@drawable/twin_icon512"
                     android:layout_margin="100dp"
                     android:cropToPadding="false"
                     android:scaleType="centerInside"
+                    android:src="@drawable/avatar_default_icon"
                     app:hexagonBorderColor="#FFFFFF"
-                    app:hexagonInnerBackgroundColor="#FFFFFF"/>
+                    app:hexagonInnerBackgroundColor="#FFFFFF" />
+                -->
                 <!--
                 <ImageView
                     android:id="@+id/imageView"
@@ -93,6 +105,7 @@
                     android:orientation="vertical"
                     android:paddingTop="50dp">
 
+                    <!--
                     <com.example.statsfrommoba.HexagonMaskView
                         android:id="@+id/image2"
                         android:layout_width="match_parent"
@@ -101,8 +114,20 @@
                         android:foreground="#ffffff"
                         android:foregroundTint="#ffffff"
                         android:scaleType="centerInside"
+                        android:visibility="gone"
                         app:hexagonBorderColor="@color/colorBehindPlayerProfileTop"
                         app:hexagonInnerBackgroundColor="@color/colorBehindPlayerProfileBottom" />
+                    -->
+                    <com.github.siyamed.shapeimageview.HexagonImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="130dp"
+                        android:layout_marginStart="140dp"
+                        android:layout_marginEnd="140dp"
+                        android:foregroundTint="@color/colorAccent"
+                        android:foregroundTintMode="add"
+                        android:src="@drawable/empty"
+                        app:siBorderColor="@color/colorBehindPlayerProfileTop"
+                        app:siBorderWidth="6dp" />
                 </LinearLayout>
 
                 <TextView
@@ -114,7 +139,7 @@
                     android:scaleY="1.5"
                     android:text="24"
                     android:textAlignment="center"
-                    android:textSize="30sp" />
+                    android:textSize="32sp" />
 
                 <TextView
                     android:id="@+id/textView3"

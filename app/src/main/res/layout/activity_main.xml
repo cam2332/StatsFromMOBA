@@ -24,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:titleTextColor="#ffffff"
-        app:title=" " />
+        app:title="Home" />
 
 
     <TextView
