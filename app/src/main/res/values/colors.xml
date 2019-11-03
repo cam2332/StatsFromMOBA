@@ -4,6 +4,6 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorBehindPlayerProfileTop">#319DE6</color>
-    <color name="colorBehindPlayerProfileBottom">#ffffff</color>
+    <color name="colorBehindPlayerProfileBottom">#FFFFFF</color>
     <color name="colorHexagonBorder">#ffffff</color>
 </resources>

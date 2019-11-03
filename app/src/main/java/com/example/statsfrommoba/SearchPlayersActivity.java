@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -66,12 +67,12 @@ public class SearchPlayersActivity extends AppCompatActivity {
             }
         });
 
-        SearchView searchView = (SearchView) findViewById(R.id.searchView);
+        SearchView searchView = (SearchView) findViewById(R.id.search_view);
         searchView.setActivated(true);
         searchView.setQueryHint("Type player name or rank");
         searchView.onActionViewExpanded();
         searchView.setIconified(false);
-        searchView.clearFocus();
+        //searchView.clearFocus();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
@@ -84,6 +85,13 @@ public class SearchPlayersActivity extends AppCompatActivity {
                 return false;
             }
         });
+        searchView.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                Log.d("SearchView " , "Focus on searchview");
+            }
+        });
+
     }
 
     @Override

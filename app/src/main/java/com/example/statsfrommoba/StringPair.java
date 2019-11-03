@@ -25,7 +25,18 @@ public class StringPair implements Comparable {
         }
     };
 
-    public static Comparator<StringPair> ValueComparator = new Comparator<StringPair>() {
+    public static Comparator<StringPair> KeyNumberComparator = new Comparator<StringPair>() {
+        @Override
+        public int compare(StringPair o1, StringPair o2) {
+            String Key1 = o1.key.toUpperCase();
+            String Key2 = o2.key.toUpperCase();
+            Integer k1 = Integer.valueOf(Key1);
+            Integer k2 = Integer.valueOf(Key2);
+            return k1.compareTo(k2);
+        }
+    };
+
+    public static Comparator<StringPair> ValueNumberComparator = new Comparator<StringPair>() {
         @Override
         public int compare(StringPair o1, StringPair o2) {
             String Value1 = o1.value.toUpperCase();
