@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <script type="text/javascript">
+          google.load("visualization", "1", {'packages':['corechart']});
+          google.setOnLoadCallback(drawChart);
+
+          function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+              ['Day', 'K/D'],
+              ['Sep 12th',  10],
+              ['Sep 13th',  17],
+              ['Sep 14th',  60],
+              ['Sep 15th',  30],
+              ['Sep 16th',  17],
+              ['Sep 17th',  13],
+              ['Sep 18th',  61]
+            ]);
+
+            var options = {
+              legend: { position: 'top', alignment: 'center'},
+              title: 'Company Performance',
+              hAxis: {
+                title: 'Year',
+                titleTextStyle: {color: '#333'},
+                slantedText: true,
+                slantedTextAngle: 60},
+              vAxis: {minValue: 0, gridlines: { count: 10 }}
+            };
+
+            var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+          }
+        </script>
+    </head>
+    <body>
+        <div id="chart_div" style="width: 100%; height: 100%;"></div>
+    </body>
+</html>

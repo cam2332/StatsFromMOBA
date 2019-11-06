@@ -6,6 +6,48 @@
     android:layout_height="match_parent"
     tools:context=".PlayerProfileActivity">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        </LinearLayout>
+    </ScrollView>
+
+    <WebView
+        android:id="@+id/charts"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="#0277BD"
+            android:text="Overall"
+            android:textColor="#ffff" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="#0277BD"
+            android:text="Charts"
+            android:textColor="#ffff" />
+    </LinearLayout>
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/top_toolbar"
         android:layout_width="match_parent"
@@ -20,17 +62,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:titleTextColor="#ffffff"
-        app:title="Profile"/>
+        app:title="Profile"
+        app:titleTextColor="#ffffff" />
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -38,8 +84,7 @@
                 android:background="@drawable/two_color_horizontal_background"
                 android:orientation="vertical">
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/profile_image"
                     android:layout_width="match_parent"
                     android:layout_height="207dp"
@@ -191,7 +236,7 @@
                 android:layout_marginTop="15dp"
                 android:orientation="vertical">
 
-                <include layout="@layout/player_overall_stats"/>
+                <include layout="@layout/player_overall_stats" />
             </LinearLayout>
 
 
