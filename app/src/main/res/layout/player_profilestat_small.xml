@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="140dp"
+    android:background="#ffff"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/player_profilestat_small_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#319DE6"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/player_profilestat_small_textview_stat_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="35dp"
+            android:layout_marginBottom="7dp"
+            android:layout_weight="1"
+            android:text="Stat Name"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/profile_image"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:src="@drawable/avatar_default_icon"
+            app:civ_border_color="@color/colorBehindPlayerProfileTop"
+            app:civ_border_width="8dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/player_profilestat_small_textview_player_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="player name"
+                android:textColor="#131313"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/player_profilestat_small_textview_stat_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_weight="1"
+                android:text="stat value"
+                android:textColor="#747474"
+                android:textSize="22sp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

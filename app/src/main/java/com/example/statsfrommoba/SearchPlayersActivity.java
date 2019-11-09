@@ -34,23 +34,11 @@ public class SearchPlayersActivity extends AppCompatActivity {
         arrayList.add(new StringPair("Player3","9"));
         arrayList.add(new StringPair("UnknownPlayer4","6"));
         arrayList.add(new StringPair("BestPlayer5","1"));
-        arrayList.add(new StringPair("WorstPlayer6","12"));
+        arrayList.add(new StringPair("WorstPlayer6","10"));
         arrayList.add(new StringPair("GoodPlayer7", "4"));
-        arrayList.add(new StringPair("BadPlayer8", "11"));
+        arrayList.add(new StringPair("BadPlayer8", "8"));
         arrayList.add(new StringPair("GeniusPlayer9", "2"));
         arrayList.add(new StringPair("ProPlayer10", "5"));
-        arrayList.add(new StringPair("NoobPlayer11", "10"));
-        arrayList.add(new StringPair("Player1","13"));
-        arrayList.add(new StringPair("Player2","14"));
-        arrayList.add(new StringPair("Player3","15"));
-        arrayList.add(new StringPair("UnknownPlayer4","16"));
-        arrayList.add(new StringPair("BestPlayer5","17"));
-        arrayList.add(new StringPair("WorstPlayer6","18"));
-        arrayList.add(new StringPair("GoodPlayer7", "19"));
-        arrayList.add(new StringPair("BadPlayer8", "20"));
-        arrayList.add(new StringPair("GeniusPlayer9", "21"));
-        arrayList.add(new StringPair("ProPlayer10", "22"));
-        arrayList.add(new StringPair("NoobPlayer11", "8"));
 
         final ListView listView = (ListView) findViewById(R.id.list_view);
         adapter = new PlayerInfoSearchResultListAdapter(arrayList);
