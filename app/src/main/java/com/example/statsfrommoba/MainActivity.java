@@ -51,35 +51,13 @@ public class MainActivity extends AppCompatActivity {
         Toolbar myToolbar = (Toolbar) findViewById(R.id.top_toolbar);
         setSupportActionBar(myToolbar);
 
-        activityModel.addProfileStatSmall("Best Player", "1", "Player3");
-        activityModel.addProfileStatSmall("Most Wins", "159", "Player1");
-        activityModel.addProfileStatSmall("Most Kills", "457", "Player2");
+        activityModel.addProfileStatSmall("Best Player", "1", "Player3", MainActivityModel.ProfileStatColor.BLUE);
+        activityModel.addProfileStatSmall("Most Wins", "159", "Player1", MainActivityModel.ProfileStatColor.YELLOW);
+        activityModel.addProfileStatSmall("Most Kills", "457", "Player2", MainActivityModel.ProfileStatColor.PURPLE);
 
-        //recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-
-        //LinearLayoutManager llm = new LinearLayoutManager(this);
-        //recyclerView.setLayoutManager(llm);
-
+        activityModel.setupSearchView();
 
         /*
-         SearchView
-         */
-        SearchView searchView = (SearchView) findViewById(R.id.main_search_view);
-        searchView.setActivated(true);
-        searchView.setQueryHint("Type player name or rank");
-        searchView.setIconified(false);
-        searchView.onActionViewExpanded();
-        searchView.clearFocus();
-        setSearchViewOnClickListener(searchView, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Click", Toast.LENGTH_LONG).show();
-                Log.d("searchView test", "Click");
-                Intent searchScreen = new Intent(MainActivity.this,SearchPlayersActivity.class);
-                startActivityForResult(searchScreen,0);
-            }
-        });
-
         arrayList.add(new StringPair("3","UnknownPlayer4"));
         arrayList.add(new StringPair("1","BestPlayer5"));
         arrayList.add(new StringPair("2", "GeniusPlayer9"));
@@ -101,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(playerProfileScreen);
             }
         });
+        */
 
 
 
@@ -126,23 +105,5 @@ public class MainActivity extends AppCompatActivity {
         */
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public static void setSearchViewOnClickListener(View v, View.OnClickListener listener) {
-        if (v instanceof ViewGroup) {
-            ViewGroup group = (ViewGroup)v;
-            int count = group.getChildCount();
-            for ( int i = 0; i < count; i++) {
-                View child = group.getChildAt(i);
-                if (child instanceof LinearLayout || child instanceof RelativeLayout) {
-                    setSearchViewOnClickListener(child, listener);
-                }
-                if (child instanceof TextView) {
-                    TextView text = (TextView)child;
-                    text.setFocusable(false);
-                }
-                child.setOnClickListener(listener);
-            }
-        }
     }
 }

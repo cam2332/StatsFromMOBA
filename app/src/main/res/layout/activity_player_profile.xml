@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PlayerProfileActivity">
+    tools:context=".PlayerProfileActivity"
+    android:background="@drawable/gradient_background">
 
     <WebView
         android:id="@+id/charts"
@@ -45,7 +46,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/two_color_horizontal_background"
+                android:background="@drawable/two_color_horizon_background"
                 android:orientation="vertical">
 
                 <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"

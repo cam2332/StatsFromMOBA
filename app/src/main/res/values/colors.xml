@@ -6,4 +6,13 @@
     <color name="colorBehindPlayerProfileTop">#319DE6</color>
     <color name="colorBehindPlayerProfileBottom">#FFFFFF</color>
     <color name="colorHexagonBorder">#ffffff</color>
+
+    <color name="blueLight">#58A4D6</color>
+    <color name="blueDark">#1B70A5</color>
+    <color name="greenLight">#61E665</color>
+    <color name="greenDark">#0A9600</color>
+    <color name="purpleLight">#926AD6</color>
+    <color name="purpleDark">#6335B6</color>
+    <color name="yellowLight">#F5E560</color>
+    <color name="yellowDark">#C5A400</color>
 </resources>

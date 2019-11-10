@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="140dp"
     android:background="#ffff"
@@ -9,9 +10,10 @@
     <LinearLayout
         android:id="@+id/player_profilestat_small_header"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#319DE6"
+        android:layout_height="48dp"
+        android:background="@drawable/two_color_angle_bluebackground"
         android:orientation="horizontal">
+        <!--android:background="#319DE6"-->
 
         <TextView
             android:id="@+id/player_profilestat_small_textview_stat_type"
@@ -29,6 +31,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/player_profilestat_small_body"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -41,7 +44,7 @@
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
             android:src="@drawable/avatar_default_icon"
-            app:civ_border_color="@color/colorBehindPlayerProfileTop"
+            app:civ_border_color="@color/purpleLight"
             app:civ_border_width="8dp" />
 
         <LinearLayout

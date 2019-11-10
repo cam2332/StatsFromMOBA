@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background"
-    tools:openDrawer="start"
+    android:orientation="vertical"
     tools:context=".MainActivity"
-    android:orientation="vertical">
+    tools:openDrawer="start">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/top_toolbar"
@@ -23,8 +23,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:titleTextColor="#ffffff"
-        app:title="Home" />
+        app:title="Home"
+        app:titleTextColor="#ffffff" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -70,7 +70,7 @@
                 android:id="@+id/main_activity_linear_layout_main_stats"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"/>
+                android:orientation="vertical" />
 
         </LinearLayout>
     </ScrollView>
