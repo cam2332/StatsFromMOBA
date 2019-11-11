@@ -23,6 +23,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Charsets;
 import com.google.common.io.ByteSource;
 
+import org.javatuples.Pair;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -32,7 +34,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MainActivityCallbacks {
 
     RecyclerView recyclerView;
     PlayerInfoSearchResultListAdapter adapter;
@@ -51,12 +53,18 @@ public class MainActivity extends AppCompatActivity {
         Toolbar myToolbar = (Toolbar) findViewById(R.id.top_toolbar);
         setSupportActionBar(myToolbar);
 
-        activityModel.addProfileStatSmall("Best Player", "1", "Player3", MainActivityModel.ProfileStatColor.BLUE);
+        RESTConnector restConnector = new RESTConnector();
+        RESTConnector.RunnableResponse responseTest = new RESTConnector().new RunnableResponse(App.getAppResources().getString(R.string.rest_server_host) + "ranking/best/bestplayer");
+        //PlayerProfileStatData test = restConnector.getPlayerProfileStatData("ranking/best/bestplayer");
+
+        activityModel.addProfileStatSmall("Best Player", responseTest.profileStatData.statvalue, responseTest.profileStatData.playerName, MainActivityModel.ProfileStatColor.BLUE);
         activityModel.addProfileStatSmall("Most Wins", "159", "Player1", MainActivityModel.ProfileStatColor.YELLOW);
         activityModel.addProfileStatSmall("Most Kills", "457", "Player2", MainActivityModel.ProfileStatColor.PURPLE);
 
         activityModel.setupSearchView();
 
+
+        //Log.d("REST Connector", getPlayerProfileData("Player1").playerName);
         /*
         arrayList.add(new StringPair("3","UnknownPlayer4"));
         arrayList.add(new StringPair("1","BestPlayer5"));
@@ -80,9 +88,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         */
-
-
-
     }
 
     @Override
@@ -105,5 +110,10 @@ public class MainActivity extends AppCompatActivity {
         */
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void updateBestPlayerProfileStat(PlayerProfileStatData profileStatData) {
+
     }
 }

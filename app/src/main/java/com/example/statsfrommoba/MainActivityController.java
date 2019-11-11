@@ -1,10 +1,15 @@
 package com.example.statsfrommoba;
 
 import android.content.Context;
+import android.view.View;
 
 public interface MainActivityController {
 
-    void addProfileStatSmall(String statType, String statValue, String playerName, MainActivityModel.ProfileStatColor headerBackgroundColor);
+    default void addProfileStatSmall(String statType, String statValue, String playerName, MainActivityModel.ProfileStatColor headerBackgroundColor) {
 
-    void setupSearchView();
+    }
+
+    default void setupSearchView() {
+
+    }
 }
