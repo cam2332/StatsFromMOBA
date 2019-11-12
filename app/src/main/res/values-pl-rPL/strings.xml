@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">StatsFromMOBA</string>
+    <string name="main_activity_title">Statystyki i rankingi \n z gry MOBA</string>
+    <string name="main_activity_subtitle">Przeglądaj statystyki i rankingi każdego z graczy</string>
+    <string name="main_activity_toolbar_title">Strona główna</string>
+    <string name="search_view_query_hint">Wpisz nazwę gracza lub jego miejsce w rankingu</string>
+</resources>

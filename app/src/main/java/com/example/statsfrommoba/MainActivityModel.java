@@ -4,8 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.VectorDrawable;
+import android.os.AsyncTask;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +27,43 @@ public class MainActivityModel implements MainActivityController {
 
     public MainActivityModel(MainActivity activity){
         this.activity = activity;
+
+        Toolbar myToolbar = (Toolbar) activity.findViewById(R.id.top_toolbar);
+        activity.setSupportActionBar(myToolbar);
+
+        setupSearchView();
+
+        AsyncTask.execute(() -> {
+            /*
+                Create card with info about best player
+             */
+            PlayerProfileStatData bestPlayer = RESTConnector.getPlayerProfileStatData("ranking/best/bestplayer");
+            activity.runOnUiThread(() -> addProfileStatSmall(
+                    "Najlepszy gracz",
+                    bestPlayer.statvalue,
+                    bestPlayer.playerName,
+                    MainActivityModel.ProfileStatColor.BLUE));
+
+            /*
+                Create card with info about most wins
+             */
+            PlayerProfileStatData mostWins = RESTConnector.getPlayerProfileStatData("ranking/best/mostwins");
+            activity.runOnUiThread(() -> addProfileStatSmall(
+                    "Najwięcej zwycięstw",
+                    mostWins.statvalue,
+                    mostWins.playerName,
+                    MainActivityModel.ProfileStatColor.YELLOW));
+
+            /*
+                Create card with info about most kills
+             */
+            PlayerProfileStatData mostKills = RESTConnector.getPlayerProfileStatData("ranking/best/mostkills");
+            activity.runOnUiThread(() -> addProfileStatSmall(
+                    "Najwięcej likwidacji",
+                    mostKills.statvalue,
+                    mostKills.playerName,
+                    MainActivityModel.ProfileStatColor.PURPLE));
+        });
     }
 
     @Override
@@ -67,15 +106,13 @@ public class MainActivityModel implements MainActivityController {
          */
         SearchView searchView = (SearchView) activity.findViewById(R.id.main_search_view);
         searchView.setActivated(true);
-        searchView.setQueryHint("Type player name or rank");
+        searchView.setQueryHint(App.getAppResources().getString(R.string.search_view_query_hint));
         searchView.setIconified(false);
         searchView.onActionViewExpanded();
         searchView.clearFocus();
         setSearchViewOnClickListener(searchView, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(activity, "Click", Toast.LENGTH_LONG).show();
-                Log.d("searchView test", "Click");
                 Intent searchScreen = new Intent(activity,SearchPlayersActivity.class);
                 activity.startActivityForResult(searchScreen,0);
             }

@@ -20,14 +20,14 @@ public class SearchPlayersActivity extends AppCompatActivity {
 
     PlayerInfoSearchResultListAdapter adapter;
     ArrayList<StringPair> arrayList = new ArrayList<>();
+    SearchPlayerActivityModel activityModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_players);
 
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.top_toolbar);
-        setSupportActionBar(myToolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        activityModel = new SearchPlayerActivityModel(this);
 
         arrayList.add(new StringPair("Player1","3"));
         arrayList.add(new StringPair("Player2","7"));
@@ -40,45 +40,9 @@ public class SearchPlayersActivity extends AppCompatActivity {
         arrayList.add(new StringPair("GeniusPlayer9", "2"));
         arrayList.add(new StringPair("ProPlayer10", "5"));
 
-        final ListView listView = (ListView) findViewById(R.id.list_view);
-        adapter = new PlayerInfoSearchResultListAdapter(arrayList);
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(SearchPlayersActivity.this, "" + ((StringPair) listView.getItemAtPosition(position)).value, Toast.LENGTH_SHORT).show();
 
-                Intent playerProfileScreen = new Intent(SearchPlayersActivity.this,PlayerProfileActivity.class);
-                playerProfileScreen.putExtra("player_name", ((StringPair) listView.getItemAtPosition(position)).key);
-                playerProfileScreen.putExtra("player_rank", ((StringPair) listView.getItemAtPosition(position)).value);
-                startActivity(playerProfileScreen);
-            }
-        });
 
-        SearchView searchView = (SearchView) findViewById(R.id.search_view);
-        searchView.setActivated(true);
-        searchView.setQueryHint("Type player name or rank");
-        searchView.onActionViewExpanded();
-        searchView.setIconified(false);
-        //searchView.clearFocus();
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String s) {
-                return false;
-            }
 
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                adapter.getFilter().filter(newText);
-                return false;
-            }
-        });
-        searchView.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                Log.d("SearchView " , "Focus on searchview");
-            }
-        });
 
     }
 

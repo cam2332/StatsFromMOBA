@@ -23,7 +23,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:title="Home"
+        app:title="@string/main_activity_toolbar_title"
         app:titleTextColor="#ffffff" />
 
     <ScrollView
@@ -43,7 +43,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="8dp"
-                android:text="MOBA Stats \n&amp; Leaderboards"
+                android:text="@string/main_activity_title"
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="30sp" />
@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="20dp"
-                android:text="Track the stats and ranking for any player on MOBA game" />
+                android:text="@string/main_activity_subtitle" />
 
             <android.support.v7.widget.SearchView
                 android:id="@+id/main_search_view"
