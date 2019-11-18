@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Charsets;
 import com.google.common.io.ByteSource;
@@ -17,6 +19,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.concurrent.Callable;
 
 public class RESTConnector {
@@ -66,16 +71,56 @@ public class RESTConnector {
             }
 
         } else {
-            profileStatData = new PlayerProfileStatData();
             Log.d("REST", "Error in response");
         }
         return profileStatData;
     }
 
+    public static List<PlayerProfileSearchData> getPlayersProfileSearchData(final String playerName) {
+        List<PlayerProfileSearchData> profileSearchData = Arrays.asList();
+
+        String response = getResponseFromServer("stats/search/" + playerName);
+        if(response != null) {
+            ObjectMapper objectMapper = new ObjectMapper();
+            try {
+                profileSearchData = Arrays.asList(objectMapper.readValue(response,PlayerProfileSearchData[].class));
+            } catch (JsonParseException e) {
+                e.printStackTrace();
+            } catch (JsonMappingException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            Log.d("REST", "Error in getPlayerProfileSearchData");
+        }
+        return profileSearchData;
+    }
+
+    public static PlayerProfileData getPlayerProfileData(final String playerName) {
+        PlayerProfileData profileData = new PlayerProfileData();
+
+        String response = getResponseFromServer("stats/player/profile" + playerName);
+        if(response != null) {
+            ObjectMapper objectMapper = new ObjectMapper();
+            try {
+                profileData = objectMapper.readValue(response,PlayerProfileData.class);
+            } catch (JsonParseException e) {
+                e.printStackTrace();
+            } catch (JsonMappingException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            Log.d("REST", "Error in getPlayerProfileData");
+        }
+        return profileData;
+    }
+
+
+/*
     public PlayerProfileData getPlayerProfileData(final String playerName){
-        /*
-            HTTP REST
-        */
         final PlayerProfileData[] profileData = new PlayerProfileData[1];
         AsyncTask.execute(new Runnable() {
             @Override
@@ -115,6 +160,7 @@ public class RESTConnector {
         });
         return profileData[0];
     }
+    */
 
     //private PlayerProfileStatData getPlayerProfileStat(){}
 }

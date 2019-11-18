@@ -20,14 +20,14 @@ public class SearchPlayersActivity extends AppCompatActivity {
 
     PlayerInfoSearchResultListAdapter adapter;
     ArrayList<StringPair> arrayList = new ArrayList<>();
-    SearchPlayerActivityModel activityModel;
+    SearchPlayersActivityModel activityModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_players);
 
-        activityModel = new SearchPlayerActivityModel(this);
+        activityModel = new SearchPlayersActivityModel(this);
 
         arrayList.add(new StringPair("Player1","3"));
         arrayList.add(new StringPair("Player2","7"));

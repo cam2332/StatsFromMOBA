@@ -1,6 +1,7 @@
 package com.example.statsfrommoba;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -10,14 +11,16 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class SearchPlayerActivityModel {
+public class SearchPlayersActivityModel {
 
     SearchPlayersActivity searchPlayersActivity;
-    ArrayList<StringPair> arrayList = new ArrayList<>();
+    ArrayList<PlayerProfileSearchData> arrayList = new ArrayList<>();
     PlayerInfoSearchResultListAdapter adapter;
+    ListView listView;
 
-    SearchPlayerActivityModel(SearchPlayersActivity searchPlayersActivity) {
+    SearchPlayersActivityModel(SearchPlayersActivity searchPlayersActivity) {
         this.searchPlayersActivity = searchPlayersActivity;
 
         /*
@@ -30,7 +33,7 @@ public class SearchPlayerActivityModel {
         /*
             ListView setup
          */
-        final ListView listView = (ListView) searchPlayersActivity.findViewById(R.id.list_view);
+        listView = (ListView) searchPlayersActivity.findViewById(R.id.list_view);
         adapter = new PlayerInfoSearchResultListAdapter(arrayList);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -57,12 +60,20 @@ public class SearchPlayerActivityModel {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
+                AsyncTask.execute(() -> {
+                    List<PlayerProfileSearchData> foundPlayers = RESTConnector.getPlayersProfileSearchData(s);
+                    searchPlayersActivity.runOnUiThread(() -> updateList(foundPlayers));
+                });
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                adapter.getFilter().filter(newText);
+                AsyncTask.execute(() -> {
+                    List<PlayerProfileSearchData> foundPlayers = RESTConnector.getPlayersProfileSearchData(newText);
+                    searchPlayersActivity.runOnUiThread(() -> updateList(foundPlayers));
+                });
+                //adapter.getFilter().filter(newText);
                 return false;
             }
         });
@@ -72,5 +83,10 @@ public class SearchPlayerActivityModel {
                 Log.d("SearchView " , "Focus on searchview");
             }
         });
+    }
+
+    private void updateList(List<PlayerProfileSearchData> players) {
+        adapter = new PlayerInfoSearchResultListAdapter(players);
+        listView.setAdapter(adapter);
     }
 }

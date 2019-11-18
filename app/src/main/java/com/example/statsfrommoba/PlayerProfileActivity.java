@@ -26,6 +26,8 @@ public class PlayerProfileActivity extends AppCompatActivity {
         setSupportActionBar(myToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
+
         setUpProfileInformation();
 
         WebView webView = (WebView) findViewById(R.id.charts);

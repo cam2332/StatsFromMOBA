@@ -37,7 +37,7 @@ public class MainActivityModel implements MainActivityController {
             /*
                 Create card with info about best player
              */
-            PlayerProfileStatData bestPlayer = RESTConnector.getPlayerProfileStatData("ranking/best/bestplayer");
+            PlayerProfileStatData bestPlayer = RESTConnector.getPlayerProfileStatData("stats/ranking/best/bestplayer");
             activity.runOnUiThread(() -> addProfileStatSmall(
                     "Najlepszy gracz",
                     bestPlayer.statvalue,
@@ -47,7 +47,7 @@ public class MainActivityModel implements MainActivityController {
             /*
                 Create card with info about most wins
              */
-            PlayerProfileStatData mostWins = RESTConnector.getPlayerProfileStatData("ranking/best/mostwins");
+            PlayerProfileStatData mostWins = RESTConnector.getPlayerProfileStatData("stats/ranking/best/mostwins");
             activity.runOnUiThread(() -> addProfileStatSmall(
                     "Najwięcej zwycięstw",
                     mostWins.statvalue,
@@ -57,7 +57,7 @@ public class MainActivityModel implements MainActivityController {
             /*
                 Create card with info about most kills
              */
-            PlayerProfileStatData mostKills = RESTConnector.getPlayerProfileStatData("ranking/best/mostkills");
+            PlayerProfileStatData mostKills = RESTConnector.getPlayerProfileStatData("stats/ranking/best/mostkills");
             activity.runOnUiThread(() -> addProfileStatSmall(
                     "Najwięcej likwidacji",
                     mostKills.statvalue,

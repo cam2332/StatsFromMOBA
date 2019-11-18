@@ -15,20 +15,22 @@ import java.util.List;
 
 public class PlayerInfoSearchResultListAdapter extends BaseAdapter implements Filterable {
 
-    ArrayList<StringPair> mData = new ArrayList();
-    ArrayList<StringPair> mDataFilerList = new ArrayList();
+    List<PlayerProfileSearchData> mData = new ArrayList();
+    List<PlayerProfileSearchData> mDataFilerList = new ArrayList();
     ValueFilter valueFilter;
     private LayoutInflater mInflater;
 
-    public PlayerInfoSearchResultListAdapter(ArrayList<StringPair> items) {
+    public PlayerInfoSearchResultListAdapter(List<PlayerProfileSearchData> items) {
         mData = items;
         mDataFilerList = items;
     }
 
+    /*
     public void addItem(final String key, final String value) {
         mData.add(new StringPair(key,value));
         notifyDataSetChanged();
     }
+    */
 
     @Override
     public int getCount() {
@@ -63,8 +65,8 @@ public class PlayerInfoSearchResultListAdapter extends BaseAdapter implements Fi
         } else {
             holder = (PlayerInfoSearchResult) convertView.getTag();
         }
-        holder.playerName.setText(mData.get(position).key);
-        holder.playerRank.setText(mData.get(position).value);
+        holder.playerName.setText(mData.get(position).playerName);
+        holder.playerRank.setText(mData.get(position).rank);
 
         return convertView;
     }
@@ -84,9 +86,9 @@ public class PlayerInfoSearchResultListAdapter extends BaseAdapter implements Fi
             FilterResults results = new FilterResults();
 
             if(constraint != null && constraint.length() > 0) {
-                List<StringPair> filterList = new ArrayList<>();
+                List<PlayerProfileSearchData> filterList = new ArrayList<>();
                 for(int i = 0; i < mDataFilerList.size(); i++) {
-                    if((mDataFilerList.get(i).key.toUpperCase()).contains(constraint.toString().toUpperCase())) {
+                    if((mDataFilerList.get(i).playerName.toUpperCase()).contains(constraint.toString().toUpperCase())) {
                         filterList.add(mDataFilerList.get(i));
                     }
                 }
@@ -101,7 +103,7 @@ public class PlayerInfoSearchResultListAdapter extends BaseAdapter implements Fi
 
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
-            mData = (ArrayList<StringPair>) results.values;
+            mData = (ArrayList<PlayerProfileSearchData>) results.values;
             notifyDataSetChanged();
         }
     }

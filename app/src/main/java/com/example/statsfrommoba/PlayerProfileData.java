@@ -7,6 +7,9 @@ public class PlayerProfileData {
     @JsonProperty("playername")
     public String playerName;
 
+    @JsonProperty("rank")
+    public Integer rank;
+
     @JsonProperty("lvl")
     public Integer lvl;
 
@@ -15,9 +18,6 @@ public class PlayerProfileData {
 
     @JsonProperty("maxxp")
     public Integer maxXP;
-
-    @JsonProperty("playedmatches")
-    public Integer playedMatches;
 
     @JsonProperty("wins")
     public Integer wins;
@@ -30,9 +30,6 @@ public class PlayerProfileData {
 
     @JsonProperty("deaths")
     public Integer deaths;
-
-    @JsonProperty("assists")
-    public Integer assists;
 
     @JsonProperty("kd")
     public Double kd;
