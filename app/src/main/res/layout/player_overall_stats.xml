@@ -30,7 +30,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/textView_wins"
+                android:id="@+id/profile_wins"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="3466"
@@ -56,7 +56,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/textView_win_percent"
+                android:id="@+id/profile_winpercent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="23.44"
@@ -116,7 +116,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/textView_kills"
+                android:id="@+id/profile_kills"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="456"
@@ -142,7 +142,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/textView_deaths"
+                android:id="@+id/profile_deaths"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="357"
@@ -202,7 +202,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/textView_kd"
+                android:id="@+id/profile_kd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="456"
@@ -228,7 +228,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/textView_kda"
+                android:id="@+id/profile_kda"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="357"
@@ -287,7 +287,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/textView_kills_per_match"
+                android:id="@+id/profile_killspermatch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="6.24"
@@ -313,7 +313,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/textView_kills_per_minute"
+                android:id="@+id/profile_killsperminute"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="3.91"
@@ -374,7 +374,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/textView_score_per_match"
+                android:id="@+id/profile_scorepermatch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="456"
@@ -400,7 +400,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/textView_score_per_minute"
+                android:id="@+id/profile_scoreperminute"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="357"

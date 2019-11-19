@@ -41,8 +41,6 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<StringPair> arrayList = new ArrayList<>();
     MainActivityModel activityModel;
 
-    public static Connect con;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

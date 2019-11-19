@@ -43,8 +43,9 @@ public class PlayerProfileActivityModel {
         Integer actualxp = (Integer) extras.get("actualxp");
         Integer maxxp = (Integer) extras.get("maxxp");
         ProgressBar progressXp = (ProgressBar) profileActivity.findViewById(R.id.profile_progressbar_xp);
-        progressXp.setProgress((actualxp/maxxp)*100);
-        System.out.println("PROGRESS : " + Integer.toString(actualxp) + " " + Integer.toString(maxxp));
+        double progress = (double)actualxp/maxxp;
+        progress *= 100;
+        progressXp.setProgress((int)progress);
 
         TextView progressText = (TextView) profileActivity.findViewById(R.id.profile_progressbar_text);
         progressText.setText(Integer.toString(actualxp) + " / " + Integer.toString(maxxp) + " XP");
