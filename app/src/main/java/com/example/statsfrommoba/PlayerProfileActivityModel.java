@@ -21,25 +21,30 @@ public class PlayerProfileActivityModel {
         if(extras == null) {
             return;
         }
-
+        /*
+            Player Name
+         */
         String playerName = (String) extras.get("playername");
-        if(playerName != null) {
-            //Toast.makeText(profileActivity, "playername" + playerName, Toast.LENGTH_SHORT).show();
-            TextView playerNameText = (TextView) profileActivity.findViewById(R.id.profile_playername);
-            playerNameText.setText(playerName);
-        }
+        TextView playerNameText = (TextView) profileActivity.findViewById(R.id.profile_playername);
+        playerNameText.setText(playerName);
 
+        /*
+            Rank
+         */
         Integer playerRank = (Integer) extras.get("rank");
-        if(playerRank != null) {
-            //Toast.makeText(profileActivity, "playerrank" + playerRank, Toast.LENGTH_LONG).show();
-            TextView playerRankText = (TextView) profileActivity.findViewById(R.id.profile_rank);
-            playerRankText.setText("Rank #" + Integer.toString(playerRank));
-        }
+        TextView playerRankText = (TextView) profileActivity.findViewById(R.id.profile_rank);
+        playerRankText.setText("Rank #" + Integer.toString(playerRank));
 
+        /*
+            Lvl
+         */
         Integer lvl = extras.getInt("lvl");
         TextView lvlText = (TextView) profileActivity.findViewById(R.id.profile_lvl);
         lvlText.setText(Integer.toString(lvl));
 
+        /*
+            XP
+         */
         Integer actualxp = (Integer) extras.get("actualxp");
         Integer maxxp = (Integer) extras.get("maxxp");
         ProgressBar progressXp = (ProgressBar) profileActivity.findViewById(R.id.profile_progressbar_xp);
@@ -49,6 +54,76 @@ public class PlayerProfileActivityModel {
 
         TextView progressText = (TextView) profileActivity.findViewById(R.id.profile_progressbar_text);
         progressText.setText(Integer.toString(actualxp) + " / " + Integer.toString(maxxp) + " XP");
+
+        /*
+            Wins
+         */
+        Integer wins = extras.getInt("wins");
+        TextView winsText = profileActivity.findViewById(R.id.profile_wins);
+        winsText.setText(Integer.toString(wins));
+
+        /*
+            Win percent
+         */
+        Double winPercent = extras.getDouble("winpercent");
+        TextView winPercentText = profileActivity.findViewById(R.id.profile_winpercent);
+        winPercentText.setText(Double.toString(winPercent));
+
+        /*
+            Kills
+         */
+        Integer kills = extras.getInt("kills");
+        TextView killsText = profileActivity.findViewById(R.id.profile_kills);
+        killsText.setText(Integer.toString(kills));
+
+        /*
+            Deaths
+         */
+        Integer deaths = extras.getInt("deaths");
+        TextView deathsText = profileActivity.findViewById(R.id.profile_deaths);
+        deathsText.setText(Integer.toString(deaths));
+
+        /*
+            KD
+         */
+        Double kd = extras.getDouble("kd");
+        TextView kdText = profileActivity.findViewById(R.id.profile_kd);
+        kdText.setText(Double.toString(kd));
+
+        /*
+            KDA
+         */
+        Double kda = extras.getDouble("kda");
+        TextView kdaText = profileActivity.findViewById(R.id.profile_kda);
+        kdText.setText(Double.toString(kda));
+
+        /*
+            Kills per match
+         */
+        Double killsPerMatch = extras.getDouble("killspermatch");
+        TextView killsPerMatchText = profileActivity.findViewById(R.id.profile_killspermatch);
+        killsPerMatchText.setText(Double.toString(killsPerMatch));
+
+        /*
+            Kills per minute
+         */
+        Double killsPerMinute = extras.getDouble("killsperminute");
+        TextView killsPerMinuteText = profileActivity.findViewById(R.id.profile_killsperminute);
+        killsPerMinuteText.setText(Double.toString(killsPerMinute));
+
+        /*
+            Score per match
+         */
+        Double scorePerMatch = extras.getDouble("scorepermatch");
+        TextView scorePerMatchText = profileActivity.findViewById(R.id.profile_scorepermatch);
+        scorePerMatchText.setText(Double.toString(scorePerMatch));
+
+        /*
+            Score per minute
+         */
+        Double scorePerMinute = extras.getDouble("scoreperminute");
+        TextView scorePerMinuteText = profileActivity.findViewById(R.id.profile_scoreperminute);
+        scorePerMinuteText.setText(Double.toString(scorePerMinute));
     }
 
     public static Bundle getPlayerProfileBundle(PlayerProfileData p) {
