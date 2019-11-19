@@ -100,7 +100,8 @@ public class RESTConnector {
     public static PlayerProfileData getPlayerProfileData(final String playerName) {
         PlayerProfileData profileData = new PlayerProfileData();
 
-        String response = getResponseFromServer("stats/player/profile" + playerName);
+        String response = getResponseFromServer("stats/player/profile/" + playerName);
+        System.out.println("RESPONSE ___________________________________ " + response);
         if(response != null) {
             ObjectMapper objectMapper = new ObjectMapper();
             try {

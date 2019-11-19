@@ -81,7 +81,7 @@
                  -->
 
                 <TextView
-                    android:id="@+id/textView_playerRank"
+                    android:id="@+id/profile_rank"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="-40dp"
@@ -92,7 +92,7 @@
                     android:textSize="24sp" />
 
                 <TextView
-                    android:id="@+id/textView_playerName"
+                    android:id="@+id/profile_playername"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="-75dp"
@@ -141,7 +141,7 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/textView_playerLvl"
+                    android:id="@+id/profile_lvl"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="95dp"
@@ -161,7 +161,7 @@
                     android:textSize="24sp" />
 
                 <ProgressBar
-                    android:id="@+id/progressBar"
+                    android:id="@+id/profile_progressbar_xp"
                     style="@android:style/Widget.ProgressBar.Horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -170,12 +170,12 @@
                     android:layout_marginRight="20dp"
                     android:background="#AFAFAF"
                     android:backgroundTint="#AFAFAF"
-                    android:progress="70"
+                    android:progress="80"
                     android:progressBackgroundTint="#E0E0E0"
                     android:progressTint="@color/colorBehindPlayerProfileTop" />
 
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/profile_progressbar_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="230dp"

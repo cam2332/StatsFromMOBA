@@ -92,9 +92,15 @@ public class MainActivityModel implements MainActivityController {
         body.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent playerProfileScreen = new Intent(activity,PlayerProfileActivity.class);
-                playerProfileScreen.putExtra("player_name", playerName);
-                activity.startActivity(playerProfileScreen);
+                AsyncTask.execute(() -> {
+                    PlayerProfileData profileData = RESTConnector.getPlayerProfileData(playerName);
+                    activity.runOnUiThread(() -> {
+                        Intent playerProfileScreen = new Intent(activity,PlayerProfileActivity.class);
+                        playerProfileScreen.putExtras(PlayerProfileActivityModel.getPlayerProfileBundle(profileData));
+                        //playerProfileScreen.putExtra("player_name", playerName);
+                        activity.startActivity(playerProfileScreen);
+                    });
+                });
             }
         });
     }

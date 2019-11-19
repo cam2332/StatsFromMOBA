@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 public class PlayerProfileActivity extends AppCompatActivity {
 
+    PlayerProfileActivityModel playerProfileActivityModel;
     private ImageView imageViewHexagon;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +27,7 @@ public class PlayerProfileActivity extends AppCompatActivity {
         setSupportActionBar(myToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
-
-        setUpProfileInformation();
+        playerProfileActivityModel = new PlayerProfileActivityModel(this);
 
         WebView webView = (WebView) findViewById(R.id.charts);
         WebSettings webSettings = webView.getSettings();
@@ -47,26 +46,5 @@ public class PlayerProfileActivity extends AppCompatActivity {
             return super.onOptionsItemSelected(item);
         }
 
-    }
-
-    private void setUpProfileInformation() {
-        Bundle extras = getIntent().getExtras();
-        if(extras == null) {
-            return;
-        }
-
-        String playerName = (String) extras.get("player_name");
-        if(playerName != null) {
-            Toast.makeText(PlayerProfileActivity.this, "player_name" + playerName, Toast.LENGTH_SHORT).show();
-            TextView playerNameText = (TextView) findViewById(R.id.textView_playerName);
-            playerNameText.setText(playerName);
-        }
-
-        String playerRank = (String) extras.get("player_rank");
-        if(playerRank != null) {
-            Toast.makeText(PlayerProfileActivity.this, "player_rank" + playerRank, Toast.LENGTH_LONG).show();
-            TextView playerRankText = (TextView) findViewById(R.id.textView_playerRank);
-            playerRankText.setText("Rank #" + playerRank);
-        }
     }
 }
