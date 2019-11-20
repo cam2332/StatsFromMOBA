@@ -2,6 +2,8 @@ package com.example.statsfrommoba;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,6 +16,8 @@ public class PlayerProfileActivityModel {
         this.profileActivity = profileActivity;
 
         setUpProfileInformation();
+
+        setUpStatsClickEvents();
     }
 
     public void setUpProfileInformation() {
@@ -100,14 +104,14 @@ public class PlayerProfileActivityModel {
         /*
             Kills per match
          */
-        Double killsPerMatch = extras.getDouble("killspermatch");
+        Double killsPerMatch = Math.round(extras.getDouble("killspermatch") * 100.0) / 100.0;
         TextView killsPerMatchText = profileActivity.findViewById(R.id.profile_killspermatch);
         killsPerMatchText.setText(Double.toString(killsPerMatch));
 
         /*
             Kills per minute
          */
-        Double killsPerMinute = extras.getDouble("killsperminute");
+        Double killsPerMinute = Math.round(extras.getDouble("killsperminute") * 100.0) / 100.0;
         TextView killsPerMinuteText = profileActivity.findViewById(R.id.profile_killsperminute);
         killsPerMinuteText.setText(Double.toString(killsPerMinute));
 
@@ -124,6 +128,58 @@ public class PlayerProfileActivityModel {
         Double scorePerMinute = extras.getDouble("scoreperminute");
         TextView scorePerMinuteText = profileActivity.findViewById(R.id.profile_scoreperminute);
         scorePerMinuteText.setText(Double.toString(scorePerMinute));
+    }
+
+    public void setUpStatsClickEvents() {
+        LinearLayout winsLayout = profileActivity.findViewById(R.id.linearlayout_wins);
+        winsLayout.setOnClickListener(v -> {
+
+        });
+
+        LinearLayout winpercentLayout = profileActivity.findViewById(R.id.linearlayout_winpercent);
+        winsLayout.setOnClickListener(v -> {
+
+        });
+
+        LinearLayout killsLayout = profileActivity.findViewById(R.id.linearlayout_kills);
+        winsLayout.setOnClickListener(v -> {
+
+        });
+
+        LinearLayout deathsLayout = profileActivity.findViewById(R.id.linearlayout_deaths);
+        winsLayout.setOnClickListener(v -> {
+
+        });
+
+        LinearLayout kdLayout = profileActivity.findViewById(R.id.linearlayout_kd);
+        winsLayout.setOnClickListener(v -> {
+
+        });
+
+        LinearLayout kdaLayout = profileActivity.findViewById(R.id.linearlayout_kda);
+        winsLayout.setOnClickListener(v -> {
+
+        });
+
+        LinearLayout killspermatchLayout = profileActivity.findViewById(R.id.linearlayout_killspermatch);
+        winsLayout.setOnClickListener(v -> {
+
+        });
+
+        LinearLayout killsperminuteLayout = profileActivity.findViewById(R.id.linearlayout_killsperminute);
+        winsLayout.setOnClickListener(v -> {
+
+        });
+
+        LinearLayout scorepermatchLayout = profileActivity.findViewById(R.id.linearlayout_scorepermatch);
+        winsLayout.setOnClickListener(v -> {
+
+        });
+
+        LinearLayout scoreperminuteLayout = profileActivity.findViewById(R.id.linearlayout_scoreperminute);
+        winsLayout.setOnClickListener(v -> {
+
+        });
     }
 
     public static Bundle getPlayerProfileBundle(PlayerProfileData p) {

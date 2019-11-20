@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
     android:orientation="vertical">
 
     <LinearLayout
@@ -13,9 +13,11 @@
         android:orientation="horizontal">
 
         <LinearLayout
+            android:id="@+id/linearlayout_wins"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:clickable="true"
             android:orientation="vertical"
             android:paddingStart="30dp"
             android:paddingTop="15dp"
@@ -25,6 +27,7 @@
                 android:id="@+id/textView22"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:clickable="false"
                 android:text="Wins"
                 android:textAlignment="textStart"
                 android:textSize="18sp" />
@@ -33,15 +36,18 @@
                 android:id="@+id/profile_wins"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:clickable="false"
                 android:text="3466"
                 android:textAlignment="textStart"
                 android:textSize="30sp" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linearlayout_winpercent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:clickable="true"
             android:orientation="vertical"
             android:paddingStart="30dp"
             android:paddingTop="15dp"
@@ -99,9 +105,11 @@
         android:orientation="horizontal">
 
         <LinearLayout
+            android:id="@+id/linearlayout_kills"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:clickable="true"
             android:orientation="vertical"
             android:paddingStart="30dp"
             android:paddingTop="15dp"
@@ -125,9 +133,11 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linearlayout_deaths"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:clickable="true"
             android:orientation="vertical"
             android:paddingStart="30dp"
             android:paddingTop="15dp"
@@ -185,9 +195,11 @@
         android:orientation="horizontal">
 
         <LinearLayout
+            android:id="@+id/linearlayout_kd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:clickable="true"
             android:orientation="vertical"
             android:paddingStart="30dp"
             android:paddingTop="15dp"
@@ -211,9 +223,11 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linearlayout_kda"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:clickable="true"
             android:orientation="vertical"
             android:paddingStart="30dp"
             android:paddingTop="15dp"
@@ -270,9 +284,11 @@
         android:orientation="horizontal">
 
         <LinearLayout
+            android:id="@+id/linearlayout_killspermatch"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:clickable="true"
             android:orientation="vertical"
             android:paddingStart="30dp"
             android:paddingTop="15dp"
@@ -296,9 +312,11 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linearlayout_killsperminute"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:clickable="true"
             android:orientation="vertical"
             android:paddingStart="30dp"
             android:paddingTop="15dp"
@@ -321,7 +339,6 @@
                 android:textSize="30sp" />
         </LinearLayout>
     </LinearLayout>
-
 
 
     <LinearLayout
@@ -357,9 +374,11 @@
         android:orientation="horizontal">
 
         <LinearLayout
+            android:id="@+id/linearlayout_scorepermatch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:clickable="true"
             android:orientation="vertical"
             android:paddingStart="30dp"
             android:paddingTop="15dp"
@@ -383,9 +402,11 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linearlayout_scoreperminute"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:clickable="true"
             android:orientation="vertical"
             android:paddingStart="30dp"
             android:paddingTop="15dp"
