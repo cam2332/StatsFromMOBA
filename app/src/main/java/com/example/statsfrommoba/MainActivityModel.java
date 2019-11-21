@@ -95,14 +95,10 @@ public class MainActivityModel implements MainActivityController {
                 AsyncTask.execute(() -> {
                     PlayerProfileData profileData = RESTConnector.getPlayerProfileData(playerName);
                     activity.runOnUiThread(() -> {
-
-                        Intent chart = new Intent(activity, ChartActivity.class);
-                        activity.startActivity(chart);
-
-                        //Intent playerProfileScreen = new Intent(activity,PlayerProfileActivity.class);
-                        //playerProfileScreen.putExtras(PlayerProfileActivityModel.getPlayerProfileBundle(profileData));
+                        Intent playerProfileScreen = new Intent(activity,PlayerProfileActivity.class);
+                        playerProfileScreen.putExtras(PlayerProfileActivityModel.getPlayerProfileBundle(profileData));
                         // playerProfileScreen.putExtra("player_name", playerName);
-                        //activity.startActivity(playerProfileScreen);
+                        activity.startActivity(playerProfileScreen);
                     });
                 });
             }

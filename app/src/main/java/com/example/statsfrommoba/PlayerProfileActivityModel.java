@@ -18,6 +18,14 @@ public class PlayerProfileActivityModel {
 
         setUpProfileInformation();
 
+//        LinearLayout winsLayout =(LinearLayout) profileActivity.findViewById(R.id.linearlayout_wins);
+//        winsLayout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.d("STAT", "click");
+//                Toast.makeText(profileActivity, "wins", Toast.LENGTH_SHORT).show();
+//            }
+//        });
         setUpStatsClickEvents();
     }
 
@@ -132,56 +140,58 @@ public class PlayerProfileActivityModel {
     }
 
     public void setUpStatsClickEvents() {
-        LinearLayout winsLayout = profileActivity.findViewById(R.id.linearlayout_wins);
+        LinearLayout winsLayout =(LinearLayout) profileActivity.findViewById(R.id.linearlayout_wins);
         winsLayout.setOnClickListener(v -> {
             Log.d("STAT", "click");
-            Toast.makeText(profileActivity, "wins", Toast.LENGTH_SHORT);
+            Toast.makeText(profileActivity, "wins", Toast.LENGTH_SHORT).show();
             Intent chart = new Intent(profileActivity, ChartActivity.class);
             profileActivity.startActivity(chart);
         });
 
-        LinearLayout winpercentLayout = profileActivity.findViewById(R.id.linearlayout_winpercent);
-        winsLayout.setOnClickListener(v -> {
 
+        LinearLayout winpercentLayout = profileActivity.findViewById(R.id.linearlayout_winpercent);
+        winpercentLayout.setOnClickListener(v -> {
+            Log.d("STAT", "click");
+            Toast.makeText(profileActivity, "winpercent", Toast.LENGTH_SHORT).show();
         });
 
         LinearLayout killsLayout = profileActivity.findViewById(R.id.linearlayout_kills);
-        winsLayout.setOnClickListener(v -> {
+        killsLayout.setOnClickListener(v -> {
 
         });
 
         LinearLayout deathsLayout = profileActivity.findViewById(R.id.linearlayout_deaths);
-        winsLayout.setOnClickListener(v -> {
+        deathsLayout.setOnClickListener(v -> {
 
         });
 
         LinearLayout kdLayout = profileActivity.findViewById(R.id.linearlayout_kd);
-        winsLayout.setOnClickListener(v -> {
+        kdLayout.setOnClickListener(v -> {
 
         });
 
         LinearLayout kdaLayout = profileActivity.findViewById(R.id.linearlayout_kda);
-        winsLayout.setOnClickListener(v -> {
+        kdaLayout.setOnClickListener(v -> {
 
         });
 
         LinearLayout killspermatchLayout = profileActivity.findViewById(R.id.linearlayout_killspermatch);
-        winsLayout.setOnClickListener(v -> {
+        killspermatchLayout.setOnClickListener(v -> {
 
         });
 
         LinearLayout killsperminuteLayout = profileActivity.findViewById(R.id.linearlayout_killsperminute);
-        winsLayout.setOnClickListener(v -> {
+        killsperminuteLayout.setOnClickListener(v -> {
 
         });
 
         LinearLayout scorepermatchLayout = profileActivity.findViewById(R.id.linearlayout_scorepermatch);
-        winsLayout.setOnClickListener(v -> {
+        scorepermatchLayout.setOnClickListener(v -> {
 
         });
 
         LinearLayout scoreperminuteLayout = profileActivity.findViewById(R.id.linearlayout_scoreperminute);
-        winsLayout.setOnClickListener(v -> {
+        scoreperminuteLayout.setOnClickListener(v -> {
 
         });
     }

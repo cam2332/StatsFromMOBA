@@ -17,17 +17,15 @@ public class ChartActivity extends AppCompatActivity {
         chart.getSettings().setJavaScriptEnabled(true);
         chart.requestFocusFromTouch();
 
-        JSHtmlEditor html = new JSHtmlEditor();
-        html.setChartType(ChartTypes.COLUMNCHART);
         String[][] data = {
-                {"'Date'", "wins"},
+                {"'Date'", "'wins'"},
                 {"'2010'", "3"},
                 {"'2011'", "5"},
                 {"'2012'", "7"},
                 {"'2013'", "6"},
                 {"'2014'", "2"},
         };
-        html.addDataString(JSHtmlEditor.makeStringFromDataTableForJS(data));
+        JSHtmlEditor html = new JSHtmlEditor(data,ChartTypes.COLUMNCHART);
 
         chart.loadData(html.getWebPage(),"text/html", null);
     }
