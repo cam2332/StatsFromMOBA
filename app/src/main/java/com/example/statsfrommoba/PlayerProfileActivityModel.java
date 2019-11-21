@@ -2,6 +2,7 @@ package com.example.statsfrommoba;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -133,7 +134,10 @@ public class PlayerProfileActivityModel {
     public void setUpStatsClickEvents() {
         LinearLayout winsLayout = profileActivity.findViewById(R.id.linearlayout_wins);
         winsLayout.setOnClickListener(v -> {
-
+            Log.d("STAT", "click");
+            Toast.makeText(profileActivity, "wins", Toast.LENGTH_SHORT);
+            Intent chart = new Intent(profileActivity, ChartActivity.class);
+            profileActivity.startActivity(chart);
         });
 
         LinearLayout winpercentLayout = profileActivity.findViewById(R.id.linearlayout_winpercent);
