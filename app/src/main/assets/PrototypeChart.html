@@ -1,0 +1,31 @@
+<html>
+<head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+          google.load("visualization", "1", {'packages':['corechart']});
+          google.setOnLoadCallback(drawChart);
+
+          function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                <data></data>
+            ]);
+
+            var options = {
+                legend: { position: 'top', maxLines: 3 },
+                bar: { groupWidth: '30%' },
+                series: {
+                    0:{color: '#1e88e5'},
+                    1:{color: '7bb241'},
+                    2:{color: 'e53935'}
+                },
+            };
+
+            var chart = new google.visualization.{chart_type)(document.getElementById('chart_div'));
+            chart.draw(data, options);
+          }
+        </script>
+</head>
+<body>
+<div id="chart_div" style="width: 100%; height: 100%;"></div>
+</body>
+</html>
