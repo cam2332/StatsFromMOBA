@@ -6,12 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".ChartActivity">
 
-    <WebView
-        android:id="@+id/chart"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="vertical">
+
+        <Spinner
+            android:id="@+id/spinner_dataselection"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp" />
+
+        <WebView
+            android:id="@+id/chart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+        </WebView>
+
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>
