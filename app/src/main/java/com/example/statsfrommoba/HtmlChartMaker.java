@@ -44,24 +44,32 @@ public class HtmlChartMaker {
                         "google.setOnLoadCallback(drawChart);\n" +
                         "" +
                         "var current = 0;\n" +
+                        "var chart = null;\n" +
+                        "var button = null;\n" +
+                        "var optionsLeft = null;\n" +
+                        "var optionsRight = null;\n" +
+                        "var data =[];\n" +
                         "\n" +
-                        "function nextDataTypeIndex(chart) {\n" +
+                        "function nextDataTypeIndex() {\n" +
                         "    current = current == 4 ? 0 : current + 1\n" +
-                        "    chart.draw(data[current], options);\n" +
                         "}\n" +
+                        "\n" +
+                        "function previousDataTypeIndex() {\n" +
+                        "    current = current == 0 ? 4 : current - 1\n" +
+                        "}\n" +
+                        "\n" +
                         "function drawChart() {\n" +
-                        "var data = [];\n" +
                         "data[0] = google.visualization.arrayToDataTable(lastDay);\n" +
                         "data[1] = google.visualization.arrayToDataTable(lastWeek);\n" +
                         "data[2] = google.visualization.arrayToDataTable(lastMonth);\n" +
                         "data[3] = google.visualization.arrayToDataTable(months);\n" +
                         "data[4] = google.visualization.arrayToDataTable(years);\n" +
                         "\n" +
-                        "var options = {\n" +
+                        "optionsLeft = {\n" +
                         "    legend: { position: 'top', maxLines: 3 },\n" +
                         "    bar: { groupWidth: '45%' },\n" +
                         "    series: {\n" +
-                        makeStringFromColorsArray(colors) +
+                        "    " + makeStringFromColorsArray(colors) +
                         "    },\n" +
                         "    isStacked: " + (isStacked ? "true," : "false,") + "\n" +
                         "    animation: {\n" +
@@ -70,24 +78,53 @@ public class HtmlChartMaker {
                         "        startup: true,\n" +
                         "    },\n" +
                         "    chartArea: {\n" +
-                        "        width: '90%',\n" +
+                        "        width: '88%',\n" +
                         "        height: '90%',\n" +
                         "    }\n" +
                         "};\n" +
                         "\n" +
-                        "var chart = new google.visualization." + chartType.toString() +"(document.getElementById('chart_div'));\n" +
-                        "var button = document.getElementById('b1');\n" +
+                        "optionsRight = {\n" +
+                        "    legend: { position: 'top', maxLines: 3 },\n" +
+                        "    bar: { groupWidth: '45%' },\n" +
+                        "    series: {\n" +
+                        "    " + makeStringFromColorsArray(colors) +
+                        "    },\n" +
+                        "    isStacked: " + (isStacked ? "true," : "false,") + "\n" +
+                        "    animation: {\n" +
+                        "        duration: 500,\n" +
+                        "        easing: 'out',\n" +
+                        "        startup: true,\n" +
+                        "    },\n" +
+                        "    chartArea: {\n" +
+                        "        width: '88%',\n" +
+                        "        height: '90%',\n" +
+                        "    }\n" +
+                        "};\n" +
                         "\n" +
-                        "chart.draw(data[current], options);\n" +
+                        "chart = new google.visualization." + chartType.toString() +"(document.getElementById('chart_div'));\n" +
+                        "button = document.getElementById('b1');\n" +
                         "\n" +
-                        "button.onclick = function() {\n" +
+                        "chart.draw(data[current], optionsLeft);\n" +
+                        "\n" +
+                        "button.onclick = () => {\n" +
+                        "    nextChart();\n" +
+                        "};\n" +
+                        "}" +
+                        "function nextChart() {\n" +
                         "    console.log(`Current value: ${current}`);\n" +
-                        "    nextDataTypeIndex(chart);\n" +
+                        "    nextDataTypeIndex();\n" +
                         "    console.log(`Current value after change: ${current}`);\n" +
                         "    \n" +
-                        "    chart.draw(data[current], options);\n" +
+                        "    chart.draw(data[current], optionsLeft);\n" +
                         "}\n" +
-                        "}" +
+                        "\n" +
+                        "function previousChart() {\n" +
+                        "    console.log(`Current value: ${current}`);\n" +
+                        "    previousDataTypeIndex();\n" +
+                        "    console.log(`Current value after change: ${current}`);\n" +
+                        "    \n" +
+                        "    chart.draw(data[current], optionsRight);\n" +
+                        "}\n" +
                         "    </script>\n" +
                         "</head>\n" +
                         "<body>\n" +

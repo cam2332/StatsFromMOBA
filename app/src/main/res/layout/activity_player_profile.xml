@@ -27,7 +27,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:title="Profile"
+        app:title="@string/profile_activity_title"
         app:titleTextColor="#ffffff" />
 
     <ScrollView
@@ -156,7 +156,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="190dp"
-                    android:text="Level"
+                    android:text="@string/profile_lvl"
                     android:textAlignment="center"
                     android:textSize="24sp" />
 

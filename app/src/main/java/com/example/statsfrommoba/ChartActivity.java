@@ -58,38 +58,15 @@ public class ChartActivity extends AppCompatActivity {
             @Override
             public void onSwipeLeft() {
                 Toast.makeText(ChartActivity.this,"Swipe Left", Toast.LENGTH_SHORT).show();
-                chart.loadUrl("javascript:nextDataTypeIndex(chart)");
+                //chart.loadUrl("javascript:nextChart()");
                 //chart.loadUrl("javascript:chart.draw(data[current], options)");
+                chart.evaluateJavascript("javascript:nextChart();", null);
             }
             @Override
             public void onSwipeRight() {
                 Toast.makeText(ChartActivity.this,"Swipe Right", Toast.LENGTH_SHORT).show();
+                chart.evaluateJavascript("javascript:previousChart();", null);
             }
         });
-
-        try {
-            BufferedReader reader = null;
-            try {
-                reader = new BufferedReader(
-                        new InputStreamReader(getAssets().open("js/chart.js")));
-                String mLine;
-                while((mLine = reader.readLine()) != null){
-                    Log.d("Chart", mLine);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                if (reader != null) {
-                    try {
-                        reader.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-            App.getAppResources().getAssets().open("js/chart.js");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }

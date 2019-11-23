@@ -46,7 +46,7 @@ public class PlayerProfileActivityModel {
          */
         Integer playerRank = (Integer) extras.get("rank");
         TextView playerRankText = (TextView) profileActivity.findViewById(R.id.profile_rank);
-        playerRankText.setText("Rank #" + Integer.toString(playerRank));
+        playerRankText.setText(App.getAppResources().getString(R.string.profile_rank) + " #" + Integer.toString(playerRank));
 
         /*
             Lvl

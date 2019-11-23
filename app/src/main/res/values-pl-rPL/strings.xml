@@ -5,4 +5,17 @@
     <string name="main_activity_subtitle">Przeglądaj statystyki i rankingi każdego z graczy</string>
     <string name="main_activity_toolbar_title">Strona główna</string>
     <string name="search_view_query_hint">Wpisz nazwę gracza lub jego miejsce w rankingu</string>
+    <string name="profile_rank">Pozycja</string>
+    <string name="profile_lvl">Poziom</string>
+    <string name="profile_wins">Zwycięstwa</string>
+    <string name="profile_winspercent">Procent zwycięstw</string>
+    <string name="profile_activity_title">Profil</string>
+    <string name="profile_deaths">Zgony</string>
+    <string name="profile_kd">K/D</string>
+    <string name="profile_kda">KDA</string>
+    <string name="profile_kills">Likwidacje</string>
+    <string name="profile_killspermatch">Likwidacje na grę</string>
+    <string name="profile_killsperminute">Likwidacje na minutę</string>
+    <string name="profile_scorepermatch">Wynik na grę</string>
+    <string name="profile_scoreperminute">Wynik na minutę</string>
 </resources>

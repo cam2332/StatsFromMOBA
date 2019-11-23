@@ -11,5 +11,18 @@
     <string name="main_activity_subtitle">Track the stats and ranking for any player</string>
     <string name="main_activity_toolbar_title">Home</string>
     <string name="search_view_query_hint">Type player name or rank</string>
+    <string name="profile_rank">Rank</string>
+    <string name="profile_lvl">Level</string>
+    <string name="profile_wins">Wins</string>
+    <string name="profile_winspercent">Wins %</string>
+    <string name="profile_kills">Kills</string>
+    <string name="profile_deaths">Deaths</string>
+    <string name="profile_kd">K/D</string>
+    <string name="profile_kda">KDA</string>
+    <string name="profile_killspermatch">Kills / Match</string>
+    <string name="profile_killsperminute">Kills / Minute</string>
+    <string name="profile_scorepermatch">Score / Match</string>
+    <string name="profile_scoreperminute">Score / Minute</string>
+    <string name="profile_activity_title">Profile</string>
 
 </resources>

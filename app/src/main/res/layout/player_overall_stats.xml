@@ -27,7 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="false"
-                android:text="Wins"
+                android:text="@string/profile_wins"
                 android:textAlignment="textStart"
                 android:textSize="18sp" />
 
@@ -56,7 +56,7 @@
                 android:id="@+id/textView292"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Win %"
+                android:text="@string/profile_winspercent"
                 android:textAlignment="textStart"
                 android:textSize="18sp" />
 
@@ -118,7 +118,7 @@
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Kills"
+                android:text="@string/profile_kills"
                 android:textAlignment="textStart"
                 android:textSize="18sp" />
 
@@ -146,7 +146,7 @@
                 android:id="@+id/textView29"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Deaths"
+                android:text="@string/profile_deaths"
                 android:textAlignment="textStart"
                 android:textSize="18sp" />
 
@@ -208,7 +208,7 @@
                 android:id="@+id/textView68"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="K/D"
+                android:text="@string/profile_kd"
                 android:textAlignment="textStart"
                 android:textSize="18sp" />
 
@@ -236,7 +236,7 @@
                 android:id="@+id/textView45"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="KDA"
+                android:text="@string/profile_kda"
                 android:textAlignment="textStart"
                 android:textSize="18sp" />
 
@@ -297,7 +297,7 @@
                 android:id="@+id/textView682"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Kills / Match"
+                android:text="@string/profile_killspermatch"
                 android:textAlignment="textStart"
                 android:textSize="18sp" />
 
@@ -325,7 +325,7 @@
                 android:id="@+id/textView452"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Kills / Minute"
+                android:text="@string/profile_killsperminute"
                 android:textAlignment="textStart"
                 android:textSize="18sp" />
 
@@ -387,7 +387,7 @@
                 android:id="@+id/textView212"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Score / Match"
+                android:text="@string/profile_scorepermatch"
                 android:textAlignment="textStart"
                 android:textSize="18sp" />
 
@@ -415,7 +415,7 @@
                 android:id="@+id/textView2922"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Score / Minute"
+                android:text="@string/profile_scoreperminute"
                 android:textAlignment="textStart"
                 android:textSize="18sp" />
 
