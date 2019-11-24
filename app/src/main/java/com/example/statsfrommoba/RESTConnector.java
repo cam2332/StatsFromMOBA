@@ -76,10 +76,10 @@ public class RESTConnector {
         return profileStatData;
     }
 
-    public static List<PlayerProfileSearchData> getPlayersProfileSearchData(final String playerName) {
+    public static List<PlayerProfileSearchData> getPlayersProfileSearchDataByName(final String playerName) {
         List<PlayerProfileSearchData> profileSearchData = Arrays.asList();
 
-        String response = getResponseFromServer("stats/search/" + playerName);
+        String response = getResponseFromServer("stats/player/search/" + playerName);
         if(response != null) {
             ObjectMapper objectMapper = new ObjectMapper();
             try {
@@ -92,7 +92,28 @@ public class RESTConnector {
                 e.printStackTrace();
             }
         } else {
-            Log.d("REST", "Error in getPlayerProfileSearchData");
+            Log.d("REST", "Error in getPlayerProfileSearchDataByName");
+        }
+        return profileSearchData;
+    }
+
+    public static List<PlayerProfileSearchData> getPlayersProfileSearchDataByRank(final Integer playerRank) {
+        List<PlayerProfileSearchData> profileSearchData = Arrays.asList();
+
+        String response = getResponseFromServer("stats/player/search/" + playerRank);
+        if(response != null) {
+            ObjectMapper objectMapper = new ObjectMapper();
+            try {
+                profileSearchData = Arrays.asList(objectMapper.readValue(response,PlayerProfileSearchData[].class));
+            } catch (JsonParseException e) {
+                e.printStackTrace();
+            } catch (JsonMappingException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            Log.d("REST", "Error in getPlayerProfileSearchDataByRank");
         }
         return profileSearchData;
     }

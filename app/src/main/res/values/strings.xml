@@ -24,5 +24,7 @@
     <string name="profile_scorepermatch">Score / Match</string>
     <string name="profile_scoreperminute">Score / Minute</string>
     <string name="profile_activity_title">Profile</string>
+    <string name="search_username">Username</string>
+    <string name="search_rank">Rank</string>
 
 </resources>

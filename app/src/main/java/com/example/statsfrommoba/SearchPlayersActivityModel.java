@@ -61,7 +61,7 @@ public class SearchPlayersActivityModel {
             @Override
             public boolean onQueryTextSubmit(String s) {
                 AsyncTask.execute(() -> {
-                    List<PlayerProfileSearchData> foundPlayers = RESTConnector.getPlayersProfileSearchData(s);
+                    List<PlayerProfileSearchData> foundPlayers = RESTConnector.getPlayersProfileSearchDataByName(s);
                     searchPlayersActivity.runOnUiThread(() -> updateList(foundPlayers));
                 });
                 return false;
@@ -70,8 +70,13 @@ public class SearchPlayersActivityModel {
             @Override
             public boolean onQueryTextChange(String newText) {
                 AsyncTask.execute(() -> {
-                    List<PlayerProfileSearchData> foundPlayers = RESTConnector.getPlayersProfileSearchData(newText);
-                    searchPlayersActivity.runOnUiThread(() -> updateList(foundPlayers));
+                    if(isInteger(newText)) {
+                        List<PlayerProfileSearchData> foundPlayers = RESTConnector.getPlayersProfileSearchDataByRank(Integer.parseInt(newText));
+                        searchPlayersActivity.runOnUiThread(() -> updateList(foundPlayers));
+                    } else {
+                        List<PlayerProfileSearchData> foundPlayers = RESTConnector.getPlayersProfileSearchDataByName(newText);
+                        searchPlayersActivity.runOnUiThread(() -> updateList(foundPlayers));
+                    }
                 });
                 //adapter.getFilter().filter(newText);
                 return false;
@@ -88,5 +93,14 @@ public class SearchPlayersActivityModel {
     private void updateList(List<PlayerProfileSearchData> players) {
         adapter = new PlayerInfoSearchResultListAdapter(players);
         listView.setAdapter(adapter);
+    }
+
+    public static boolean isInteger(String number) {
+        try {
+            Integer.parseInt(number);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 }
