@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Charsets;
 import com.google.common.io.ByteSource;
@@ -116,6 +117,23 @@ public class RESTConnector {
             Log.d("REST", "Error in getPlayerProfileSearchDataByRank");
         }
         return profileSearchData;
+    }
+
+    public static JsonNode getPlayerProfileHistoryDate(final String playerName, String statType) {
+        JsonNode node = new ObjectMapper().readTree("");
+
+        String response = getResponseFromServer("stats/player/profile/history/" + playerName + "/" + statType);
+        if(response != null) {
+            ObjectMapper objectMapper = new ObjectMapper();
+            try {
+                node = objectMapper.readTree(response);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            Log.d("REST", "Error in getPlayerProfileHistoryData");
+        }
+        return node;
     }
 
     public static PlayerProfileData getPlayerProfileData(final String playerName) {
