@@ -14,7 +14,8 @@
         <Spinner
             android:id="@+id/spinner_dataselection"
             android:layout_width="wrap_content"
-            android:layout_height="50dp" />
+            android:layout_height="50dp"
+            android:visibility="gone" />
 
         <WebView
             android:id="@+id/chart"

@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/profile_stats_background">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,7 +24,7 @@
             android:paddingEnd="10dp">
 
             <TextView
-                android:id="@+id/textView22"
+                android:id="@+id/wins_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="false"
@@ -36,7 +37,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="false"
-                android:text="3466"
                 android:textAlignment="textStart"
                 android:textSize="30sp" />
 
@@ -46,8 +46,7 @@
                 android:layout_height="2dp"
                 android:layout_marginEnd="10dp"
                 android:layout_weight="1"
-                android:background="#BFFFFFFF"
-                android:backgroundTint="@color/colorBehindPlayerProfileTop" />
+                android:background="@color/colorBehindPlayerProfileTop" />
         </LinearLayout>
 
         <LinearLayout
@@ -62,7 +61,7 @@
             android:paddingEnd="10dp">
 
             <TextView
-                android:id="@+id/textView292"
+                android:id="@+id/wins_percent_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/profile_winspercent"
@@ -73,7 +72,6 @@
                 android:id="@+id/profile_winpercent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="23.44"
                 android:textAlignment="textStart"
                 android:textSize="30sp" />
 
@@ -83,8 +81,7 @@
                 android:layout_height="2dp"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
-                android:background="#BFFFFFFF"
-                android:backgroundTint="@color/colorBehindPlayerProfileTop" />
+                android:background="@color/colorBehindPlayerProfileTop" />
         </LinearLayout>
     </LinearLayout>
 
@@ -106,7 +103,7 @@
             android:paddingEnd="10dp">
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/kills_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/profile_kills"
@@ -117,7 +114,6 @@
                 android:id="@+id/profile_kills"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="456"
                 android:textAlignment="textStart"
                 android:textSize="30sp" />
 
@@ -127,8 +123,7 @@
                 android:layout_height="2dp"
                 android:layout_marginEnd="10dp"
                 android:layout_weight="1"
-                android:background="#BFFFFFFF"
-                android:backgroundTint="@color/colorBehindPlayerProfileTop" />
+                android:background="@color/colorBehindPlayerProfileTop" />
         </LinearLayout>
 
         <LinearLayout
@@ -143,7 +138,7 @@
             android:paddingEnd="10dp">
 
             <TextView
-                android:id="@+id/textView29"
+                android:id="@+id/deaths_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/profile_deaths"
@@ -154,7 +149,6 @@
                 android:id="@+id/profile_deaths"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="357"
                 android:textAlignment="textStart"
                 android:textSize="30sp" />
 
@@ -164,8 +158,7 @@
                 android:layout_height="2dp"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
-                android:background="#BFFFFFFF"
-                android:backgroundTint="@color/colorBehindPlayerProfileTop" />
+                android:background="@color/colorBehindPlayerProfileTop" />
         </LinearLayout>
     </LinearLayout>
 
@@ -187,7 +180,7 @@
             android:paddingEnd="10dp">
 
             <TextView
-                android:id="@+id/textView68"
+                android:id="@+id/kd_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/profile_kd"
@@ -198,7 +191,6 @@
                 android:id="@+id/profile_kd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="456"
                 android:textAlignment="textStart"
                 android:textSize="30sp" />
 
@@ -208,8 +200,7 @@
                 android:layout_height="2dp"
                 android:layout_marginEnd="10dp"
                 android:layout_weight="1"
-                android:background="#BFFFFFFF"
-                android:backgroundTint="@color/colorBehindPlayerProfileTop" />
+                android:background="@color/colorBehindPlayerProfileTop" />
         </LinearLayout>
 
         <LinearLayout
@@ -224,7 +215,7 @@
             android:paddingEnd="10dp">
 
             <TextView
-                android:id="@+id/textView45"
+                android:id="@+id/kda_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/profile_kda"
@@ -235,7 +226,6 @@
                 android:id="@+id/profile_kda"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="357"
                 android:textAlignment="textStart"
                 android:textSize="30sp" />
 
@@ -245,8 +235,7 @@
                 android:layout_height="2dp"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
-                android:background="#BFFFFFFF"
-                android:backgroundTint="@color/colorBehindPlayerProfileTop" />
+                android:background="@color/colorBehindPlayerProfileTop" />
         </LinearLayout>
     </LinearLayout>
 
@@ -267,7 +256,7 @@
             android:paddingEnd="10dp">
 
             <TextView
-                android:id="@+id/textView682"
+                android:id="@+id/kills_per_match_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/profile_killspermatch"
@@ -278,7 +267,6 @@
                 android:id="@+id/profile_killspermatch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="6.24"
                 android:textAlignment="textStart"
                 android:textSize="30sp" />
 
@@ -288,8 +276,7 @@
                 android:layout_height="2dp"
                 android:layout_marginEnd="10dp"
                 android:layout_weight="1"
-                android:background="#BFFFFFFF"
-                android:backgroundTint="@color/colorBehindPlayerProfileTop" />
+                android:background="@color/colorBehindPlayerProfileTop" />
         </LinearLayout>
 
         <LinearLayout
@@ -304,7 +291,7 @@
             android:paddingEnd="10dp">
 
             <TextView
-                android:id="@+id/textView452"
+                android:id="@+id/kills_per_minute_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/profile_killsperminute"
@@ -315,7 +302,6 @@
                 android:id="@+id/profile_killsperminute"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="3.91"
                 android:textAlignment="textStart"
                 android:textSize="30sp" />
 
@@ -325,8 +311,7 @@
                 android:layout_height="2dp"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
-                android:background="#BFFFFFFF"
-                android:backgroundTint="@color/colorBehindPlayerProfileTop" />
+                android:background="@color/colorBehindPlayerProfileTop" />
         </LinearLayout>
     </LinearLayout>
 
@@ -348,7 +333,7 @@
             android:paddingEnd="10dp">
 
             <TextView
-                android:id="@+id/textView212"
+                android:id="@+id/score_per_match_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/profile_scorepermatch"
@@ -359,18 +344,16 @@
                 android:id="@+id/profile_scorepermatch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="456"
                 android:textAlignment="textStart"
                 android:textSize="30sp" />
 
             <View
-                android:id="@+id/divider14"
+                android:id="@+id/divider11"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_marginEnd="10dp"
                 android:layout_weight="1"
-                android:background="#BFFFFFFF"
-                android:backgroundTint="@color/colorBehindPlayerProfileTop" />
+                android:background="@color/colorBehindPlayerProfileTop" />
         </LinearLayout>
 
         <LinearLayout
@@ -385,7 +368,7 @@
             android:paddingEnd="10dp">
 
             <TextView
-                android:id="@+id/textView2922"
+                android:id="@+id/score_per_minute_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/profile_scoreperminute"
@@ -396,18 +379,16 @@
                 android:id="@+id/profile_scoreperminute"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="357"
                 android:textAlignment="textStart"
                 android:textSize="30sp" />
 
             <View
-                android:id="@+id/divider15"
+                android:id="@+id/divider10"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
-                android:background="#BFFFFFFF"
-                android:backgroundTint="@color/colorBehindPlayerProfileTop" />
+                android:background="@color/colorBehindPlayerProfileTop" />
         </LinearLayout>
     </LinearLayout>
 

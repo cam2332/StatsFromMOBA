@@ -29,6 +29,7 @@ public class SearchPlayersActivityModel {
         Toolbar myToolbar = (Toolbar) searchPlayersActivity.findViewById(R.id.top_toolbar);
         searchPlayersActivity.setSupportActionBar(myToolbar);
         searchPlayersActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        this.searchPlayersActivity.getWindow().setStatusBarColor(this.searchPlayersActivity.getResources().getColor(R.color.toolbarColor, this.searchPlayersActivity.getTheme()));
 
         /*
             ListView setup
@@ -39,12 +40,21 @@ public class SearchPlayersActivityModel {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(searchPlayersActivity, "" + ((StringPair) listView.getItemAtPosition(position)).value, Toast.LENGTH_SHORT).show();
-
-                Intent playerProfileScreen = new Intent(searchPlayersActivity,PlayerProfileActivity.class);
-                playerProfileScreen.putExtra("player_name", ((StringPair) listView.getItemAtPosition(position)).key);
-                playerProfileScreen.putExtra("player_rank", ((StringPair) listView.getItemAtPosition(position)).value);
-                searchPlayersActivity.startActivity(playerProfileScreen);
+                //Toast.makeText(searchPlayersActivity, "" + ((StringPair) listView.getItemAtPosition(position)).value, Toast.LENGTH_SHORT).show();
+                Log.d("SEARCH PLAYER ACTIVITY MODEL", ((PlayerProfileSearchData) listView.getItemAtPosition(position)).toString());
+                //Intent playerProfileScreen = new Intent(searchPlayersActivity,PlayerProfileActivity.class);
+                //playerProfileScreen.putExtra("player_name", ((PlayerProfileSearchData) listView.getItemAtPosition(position)).playerName);
+                //playerProfileScreen.putExtra("player_rank", ((PlayerProfileSearchData) listView.getItemAtPosition(position)).rank);
+                //searchPlayersActivity.startActivity(playerProfileScreen);
+                AsyncTask.execute(() -> {
+                    PlayerProfileData profileData = RESTConnector.getPlayerProfileData(((PlayerProfileSearchData) listView.getItemAtPosition(position)).playerName);
+                    searchPlayersActivity.runOnUiThread(() -> {
+                        Intent playerProfileScreen = new Intent(searchPlayersActivity,PlayerProfileActivity.class);
+                        playerProfileScreen.putExtras(PlayerProfileActivityModel.getPlayerProfileBundle(profileData));
+                        // playerProfileScreen.putExtra("player_name", playerName);
+                        searchPlayersActivity.startActivity(playerProfileScreen);
+                    });
+                });
             }
         });
 

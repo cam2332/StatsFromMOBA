@@ -36,7 +36,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/title"
+                android:id="@+id/main_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -46,7 +46,8 @@
                 android:text="@string/main_activity_title"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                android:longClickable="true"/>
 
             <TextView
                 android:id="@+id/textView4"

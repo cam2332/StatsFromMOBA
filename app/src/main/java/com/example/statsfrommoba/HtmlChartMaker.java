@@ -8,6 +8,7 @@ import com.google.common.io.Files;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.List;
 
 public class HtmlChartMaker {
@@ -16,18 +17,12 @@ public class HtmlChartMaker {
     public static String AREACHART = "AreaChart";
     public static String STEPPEDAREACHART = "SteppedAreaChart";
     String content;
-    public HtmlChartMaker(String[][] yearsData, String[][] monthsData, String[][] lastMonthData, String[][] lastWeekData, String[][] lastDayData, ChartTypes chartType, boolean isStacked, String[] colors) {
+    public HtmlChartMaker(ArrayList<ArrayList<String>> lastMonthData, ArrayList<ArrayList<String>> lastWeekData,ChartTypes chartType, boolean isStacked, ArrayList<String> colors, String backgroundColor, String textColor) {
         content =
                 "<html>\n" +
                         "<head>\n" +
                         "    <script type=\"text/javascript\" src=\"https://www.google.com/jsapi\"></script>\n" +
                         "    <script type=\"text/javascript\">\n" +
-                        "      var years = [\n" +
-                        makeStringFromDataTableForJS(yearsData) +
-                        "];\n" +
-                        "var months = [\n" +
-                        makeStringFromDataTableForJS(monthsData) +
-                        "];\n" +
                         "\n" +
                         "var lastMonth = [\n" +
                         makeStringFromDataTableForJS(lastMonthData) +
@@ -37,9 +32,6 @@ public class HtmlChartMaker {
                         makeStringFromDataTableForJS(lastWeekData) +
                         "]\n" +
                         "\n" +
-                        "var lastDay = [\n" +
-                        makeStringFromDataTableForJS(lastDayData) +
-                        "];\n" +
                         "google.load(\"visualization\", \"1\", {'packages':['corechart']});\n" +
                         "google.setOnLoadCallback(drawChart);\n" +
                         "" +
@@ -51,54 +43,57 @@ public class HtmlChartMaker {
                         "var data =[];\n" +
                         "\n" +
                         "function nextDataTypeIndex() {\n" +
-                        "    current = current == 4 ? 0 : current + 1\n" +
+                        "    current = current == 1 ? 0 : current + 1\n" +
                         "}\n" +
                         "\n" +
                         "function previousDataTypeIndex() {\n" +
-                        "    current = current == 0 ? 4 : current - 1\n" +
+                        "    current = current == 0 ? 1 : current - 1\n" +
                         "}\n" +
                         "\n" +
                         "function drawChart() {\n" +
-                        "data[0] = google.visualization.arrayToDataTable(lastDay);\n" +
-                        "data[1] = google.visualization.arrayToDataTable(lastWeek);\n" +
-                        "data[2] = google.visualization.arrayToDataTable(lastMonth);\n" +
-                        "data[3] = google.visualization.arrayToDataTable(months);\n" +
-                        "data[4] = google.visualization.arrayToDataTable(years);\n" +
+                        "data[0] = google.visualization.arrayToDataTable(lastWeek);\n" +
+                        "data[1] = google.visualization.arrayToDataTable(lastMonth);\n" +
                         "\n" +
                         "optionsLeft = {\n" +
-                        "    legend: { position: 'top', maxLines: 3 },\n" +
+                        "    legend: { position: 'top', maxLines: 9, textStyle: { color: '" + textColor + "' } },\n" +
                         "    bar: { groupWidth: '45%' },\n" +
                         "    series: {\n" +
                         "    " + makeStringFromColorsArray(colors) +
                         "    },\n" +
                         "    isStacked: " + (isStacked ? "true," : "false,") + "\n" +
                         "    animation: {\n" +
-                        "        duration: 500,\n" +
+                        "        duration: 150,\n" +
                         "        easing: 'out',\n" +
                         "        startup: true,\n" +
                         "    },\n" +
                         "    chartArea: {\n" +
-                        "        width: '88%',\n" +
-                        "        height: '90%',\n" +
-                        "    }\n" +
+                        "        width: '84%',\n" +
+                        "        height: '88%',\n" +
+                        "    },\n" +
+                        "    backgroundColor: '" + backgroundColor + "'," +
+                        "    hAxis: { textStyle: { color: '" + textColor + "' }}," +
+                        "    vAxis: { textStyle: { color: '" + textColor + "' }}," +
                         "};\n" +
                         "\n" +
                         "optionsRight = {\n" +
-                        "    legend: { position: 'top', maxLines: 3 },\n" +
+                        "    legend: { position: 'top', maxLines: 8, textStyle: { color: '" + textColor + "' } },\n" +
                         "    bar: { groupWidth: '45%' },\n" +
                         "    series: {\n" +
                         "    " + makeStringFromColorsArray(colors) +
                         "    },\n" +
                         "    isStacked: " + (isStacked ? "true," : "false,") + "\n" +
                         "    animation: {\n" +
-                        "        duration: 500,\n" +
+                        "        duration: 150,\n" +
                         "        easing: 'out',\n" +
                         "        startup: true,\n" +
                         "    },\n" +
                         "    chartArea: {\n" +
-                        "        width: '88%',\n" +
-                        "        height: '90%',\n" +
-                        "    }\n" +
+                        "        width: '85%',\n" +
+                        "        height: '88%',\n" +
+                        "    },\n" +
+                        "    backgroundColor: '" + backgroundColor + "'," +
+                        "    hAxis: { textStyle: { color: '" + textColor + "' }}," +
+                        "    vAxis: { textStyle: { color: '" + textColor + "' }}," +
                         "};\n" +
                         "\n" +
                         "chart = new google.visualization." + chartType.toString() +"(document.getElementById('chart_div'));\n" +
@@ -127,9 +122,8 @@ public class HtmlChartMaker {
                         "}\n" +
                         "    </script>\n" +
                         "</head>\n" +
-                        "<body>\n" +
-                        "  <div id=\"chart_div\" style=\"width: 100%; height: 100%;\"></div>\n" +
-                        "<button id=\"b1\">button</button>\n" +
+                        "<body style=\"background-color: " + backgroundColor + ";\">\n" +
+                        "  <div id=\"chart_div\" style=\"width: 105%; height: 100%;\"></div>\n" +
                         "</body>\n" +
                         "</html>";
         Log.d("HTML" ,content);
@@ -156,6 +150,17 @@ public class HtmlChartMaker {
         return text.toString();
     }
 
+    public static String makeStringFromColorsArray(ArrayList<String> colors) {
+        StringBuilder text = new StringBuilder();
+        for(int i = 0; i < colors.size(); i++) {
+            text.append(i);
+            text.append(":{color: '");
+            text.append(colors.get(i));
+            text.append("'},\n");
+        }
+        return text.toString();
+    }
+
     public static String makeStringFromDataTableForJS(String[][] data) {
         StringBuilder text = new StringBuilder();
         for (int j = 0; j < data.length; j++) {
@@ -169,6 +174,25 @@ public class HtmlChartMaker {
             }
             text.append("]");
             if(j < data.length-1) {
+                text.append(", \n");
+            }
+        }
+        return text.toString();
+    }
+
+    public static String makeStringFromDataTableForJS(ArrayList<ArrayList<String>> data) {
+        StringBuilder text = new StringBuilder();
+        for (int j = 0; j < data.size(); j++) {
+            ArrayList<String> elements = data.get(j);
+            text.append("[");
+            for (int i = 0; i < elements.size(); i++) {
+                text.append(elements.get(i));
+                if (i < elements.size() - 1) {
+                    text.append(", ");
+                }
+            }
+            text.append("]");
+            if(j < data.size()-1) {
                 text.append(", \n");
             }
         }

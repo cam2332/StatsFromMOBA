@@ -119,10 +119,11 @@ public class RESTConnector {
         return profileSearchData;
     }
 
-    public static JsonNode getPlayerProfileHistoryDate(final String playerName, String statType) {
-        JsonNode node = new ObjectMapper().readTree("");
 
-        String response = getResponseFromServer("stats/player/profile/history/" + playerName + "/" + statType);
+    public static JsonNode getPlayerProfileHistoryDate(final String playerName, String statType) {
+        JsonNode node = null;
+
+        String response = getResponseFromServer("stats/player/history/" + playerName + "/" + statType);
         if(response != null) {
             ObjectMapper objectMapper = new ObjectMapper();
             try {
@@ -135,6 +136,7 @@ public class RESTConnector {
         }
         return node;
     }
+
 
     public static PlayerProfileData getPlayerProfileData(final String playerName) {
         PlayerProfileData profileData = new PlayerProfileData();
@@ -157,50 +159,4 @@ public class RESTConnector {
         }
         return profileData;
     }
-
-
-/*
-    public PlayerProfileData getPlayerProfileData(final String playerName){
-        final PlayerProfileData[] profileData = new PlayerProfileData[1];
-        AsyncTask.execute(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    URL endPoint = new URL(App.getAppResources().getString(R.string.rest_server_host) + "stats/player" + playerName);
-                    HttpURLConnection connection = (HttpURLConnection) endPoint.openConnection();
-                    //connection.setRequestProperty("name", "test");
-                    final int responseCode =  connection.getResponseCode();
-                    //connection.getResponseMessage()
-                    if(responseCode == 200) {
-                        Log.d("HTTP", "Success response");
-                        final InputStream responseBody = connection.getInputStream();
-                        final InputStreamReader responseBodyReader = new InputStreamReader(responseBody, "UTF-8");
-
-                        ByteSource byteSource = new ByteSource() {
-                            @Override
-                            public InputStream openStream() throws IOException {
-                                return responseBody;
-                            }
-                        };
-                        final String text = byteSource.asCharSource(Charsets.UTF_8).read();
-                        ObjectMapper objectMapper = new ObjectMapper();
-                        profileData[0] = objectMapper.readValue(text,PlayerProfileData.class);
-
-                        connection.disconnect();
-                    } else {
-                        profileData[0] = new PlayerProfileData();
-                        Log.d("HTTP", "Error in response" + Integer.toString(responseCode));
-                    }
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        return profileData[0];
-    }
-    */
-
-    //private PlayerProfileStatData getPlayerProfileStat(){}
 }

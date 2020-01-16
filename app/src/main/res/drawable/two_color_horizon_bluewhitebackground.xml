@@ -7,7 +7,7 @@
 
     <path
         android:name="top_rectangle"
-        android:fillColor="@color/colorBehindPlayerProfileTop"
+        android:fillColor="@color/blueLight"
         android:pathData="M 0,0 L 100,0 100,50 0,50 z" />
 
     <path

@@ -14,9 +14,12 @@ import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.widget.ImageView;
 
 public class HexagonImageView extends android.support.v7.widget.AppCompatImageView {
+
+    static String color = "#D82525";
 
     public HexagonImageView(Context ctx, AttributeSet attrs) {
         super(ctx, attrs);
@@ -24,7 +27,6 @@ public class HexagonImageView extends android.support.v7.widget.AppCompatImageVi
 
     @Override
     protected void onDraw(Canvas canvas) {
-
         Drawable drawable = getDrawable();
 
         if (drawable == null) {
@@ -76,7 +78,7 @@ public class HexagonImageView extends android.support.v7.widget.AppCompatImageVi
 
         path.close();
         canvas.drawARGB(0, 0, 0, 0);
-        paint.setColor(Color.parseColor("#BAB399"));
+        paint.setColor(Color.parseColor(color));
         canvas.drawPath(path, paint);
         paint.setXfermode(new PorterDuffXfermode(Mode.SRC_IN));
         canvas.drawBitmap(finalBitmap, rect, rect, paint);

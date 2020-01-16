@@ -15,4 +15,7 @@
     <color name="purpleDark">#6335B6</color>
     <color name="yellowLight">#F5E560</color>
     <color name="yellowDark">#C5A400</color>
+    <color name="toolbarColor">#0277BD</color>
+    <color name="backgroundblack">#202020</color>
+    <color name="backgroundwhite">#ffffff</color>
 </resources>

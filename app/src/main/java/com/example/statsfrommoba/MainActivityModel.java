@@ -1,26 +1,39 @@
 package com.example.statsfrommoba;
 
+import android.app.AlarmManager;
+import android.app.AlertDialog;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.VectorDrawable;
+import android.media.Image;
+import android.net.ConnectivityManager;
 import android.os.AsyncTask;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
+import java.io.InputStream;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class MainActivityModel implements MainActivityController {
+public class MainActivityModel {
 
-    enum ProfileStatColor {
+    public enum ProfileStatColor {
         BLUE, GREEN, PURPLE, YELLOW;
     }
     MainActivity activity;
@@ -30,44 +43,74 @@ public class MainActivityModel implements MainActivityController {
 
         Toolbar myToolbar = (Toolbar) activity.findViewById(R.id.top_toolbar);
         activity.setSupportActionBar(myToolbar);
+        this.activity.getWindow().setStatusBarColor(this.activity.getResources().getColor(R.color.toolbarColor, this.activity.getTheme()));
 
-        setupSearchView();
+        ConnectivityManager cm = (ConnectivityManager) activity.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if(cm.getActiveNetworkInfo() == null) {
+            AlertDialog alertDialog = new AlertDialog.Builder(activity).create();
+            alertDialog.setTitle("No Internet Connection");
+            alertDialog.setMessage("Please check your internet connection and try again");
+            alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK",
+                    (dialogInterface, i) -> {
+                        dialogInterface.dismiss();
+                        activity.finishAffinity();
+                        System.exit(0);
+                    });
+            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Restart App",
+                    (dialogInterface, i) -> {
+                        Intent intent = activity.getPackageManager()
+                                .getLaunchIntentForPackage(activity.getPackageName());
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        activity.startActivity(intent);
+                        ActivityCompat.finishAfterTransition(activity);
+                    });
+            alertDialog.show();
+        } else {
+            setupSearchView();
 
-        AsyncTask.execute(() -> {
+            AsyncTask.execute(() -> {
             /*
                 Create card with info about best player
              */
-            PlayerProfileStatData bestPlayer = RESTConnector.getPlayerProfileStatData("stats/ranking/best/bestplayer");
-            activity.runOnUiThread(() -> addProfileStatSmall(
-                    "Najlepszy gracz",
-                    bestPlayer.statvalue,
-                    bestPlayer.playerName,
-                    MainActivityModel.ProfileStatColor.BLUE));
+                PlayerProfileStatData bestPlayer = RESTConnector.getPlayerProfileStatData("stats/ranking/best/bestplayer");
+                activity.runOnUiThread(() -> {
+                    ImageView image = addProfileStatSmall("Najlepszy gracz", bestPlayer.statvalue, bestPlayer.playerName, MainActivityModel.ProfileStatColor.BLUE);
+                    /* Get player profile image */
+                    new DownloadImageTask1(image).execute("https://api.adorable.io/avatars/60/" + bestPlayer.playerName + ".png");});
 
             /*
                 Create card with info about most wins
              */
-            PlayerProfileStatData mostWins = RESTConnector.getPlayerProfileStatData("stats/ranking/best/mostwins");
-            activity.runOnUiThread(() -> addProfileStatSmall(
-                    "Najwięcej zwycięstw",
-                    mostWins.statvalue,
-                    mostWins.playerName,
-                    MainActivityModel.ProfileStatColor.YELLOW));
+                PlayerProfileStatData mostWins = RESTConnector.getPlayerProfileStatData("stats/ranking/best/mostwins");
+                activity.runOnUiThread(() -> {
+                    ImageView image = addProfileStatSmall("Najwięcej zwycięstw", mostWins.statvalue, mostWins.playerName, MainActivityModel.ProfileStatColor.YELLOW);
+                    /* Get player profile image */
+                    new DownloadImageTask1(image).execute("https://api.adorable.io/avatars/60/" + mostWins.playerName + ".png");});
 
             /*
                 Create card with info about most kills
              */
-            PlayerProfileStatData mostKills = RESTConnector.getPlayerProfileStatData("stats/ranking/best/mostkills");
-            activity.runOnUiThread(() -> addProfileStatSmall(
-                    "Najwięcej likwidacji",
-                    mostKills.statvalue,
-                    mostKills.playerName,
-                    MainActivityModel.ProfileStatColor.PURPLE));
-        });
+                PlayerProfileStatData mostKills = RESTConnector.getPlayerProfileStatData("stats/ranking/best/mostkills");
+                activity.runOnUiThread(() -> {
+                    ImageView image = addProfileStatSmall("Najwięcej likwidacji", mostKills.statvalue, mostKills.playerName, MainActivityModel.ProfileStatColor.PURPLE);
+                    /* Get player profile image */
+                    new DownloadImageTask1(image).execute("https://api.adorable.io/avatars/60/" + mostKills.playerName + ".png");});
+            });
+
+            TextView title = activity.findViewById(R.id.main_title);
+            title.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    App.darkMode = !App.darkMode;
+                    Toast.makeText(activity, "DARK MODE: " + App.darkMode, Toast.LENGTH_LONG).show();
+                    return false;
+                }
+            });
+        }
     }
 
-    @Override
-    public void addProfileStatSmall(String statType, String statValue, final String playerName, ProfileStatColor headerBackgroundColor) {
+
+    public ImageView addProfileStatSmall(String statType, String statValue, final String playerName, ProfileStatColor headerBackgroundColor) {
         LinearLayout stats = (LinearLayout) activity.findViewById(R.id.main_activity_linear_layout_main_stats);
         View child = activity.getLayoutInflater().inflate(R.layout.player_profilestat_small,null);
 
@@ -75,8 +118,8 @@ public class MainActivityModel implements MainActivityController {
         Drawable background = ContextCompat.getDrawable(activity,backgroundDrawable(headerBackgroundColor));
         header.setBackground(background);
 
-        CircleImageView circleImageView = (CircleImageView) child.findViewById(R.id.profile_image);
-        circleImageView.setBorderColor(ContextCompat.getColor(activity,lightColor(headerBackgroundColor)));
+        ImageView imageView = (ImageView) child.findViewById(R.id.player_profilestat_small_profile_image);
+        //imageView.setBorderColor(ContextCompat.getColor(activity,lightColor(headerBackgroundColor)));
 
         TextView childPlayerName = (TextView) child.findViewById(R.id.player_profilestat_small_textview_player_name);
         childPlayerName.setText(playerName);
@@ -97,15 +140,34 @@ public class MainActivityModel implements MainActivityController {
                     activity.runOnUiThread(() -> {
                         Intent playerProfileScreen = new Intent(activity,PlayerProfileActivity.class);
                         playerProfileScreen.putExtras(PlayerProfileActivityModel.getPlayerProfileBundle(profileData));
-                        // playerProfileScreen.putExtra("player_name", playerName);
+                        switch (headerBackgroundColor) {
+                            case BLUE:
+
+                                playerProfileScreen.putExtra("darkColor", Integer.toHexString(R.color.blueDark));
+                                break;
+                            case GREEN:
+                                playerProfileScreen.putExtra("color", Integer.toHexString(R.color.greenLight));
+                                playerProfileScreen.putExtra("darkColor", Integer.toHexString(R.color.greenDark));
+                                break;
+                            case PURPLE:
+                                playerProfileScreen.putExtra("color", Integer.toHexString(R.color.purpleLight));
+                                playerProfileScreen.putExtra("darkColor", Integer.toHexString(R.color.purpleDark));
+                                break;
+                            case YELLOW:
+                                playerProfileScreen.putExtra("color", Integer.toHexString(R.color.yellowLight));
+                                playerProfileScreen.putExtra("darkColor", Integer.toHexString(R.color.yellowDark));
+                                break;
+                        }
+                        playerProfileScreen.putExtra("color", headerBackgroundColor.toString());
                         activity.startActivity(playerProfileScreen);
                     });
                 });
             }
         });
+        return imageView;
     }
 
-    @Override
+
     public void setupSearchView() {
         /*
          SearchView
@@ -170,6 +232,31 @@ public class MainActivityModel implements MainActivityController {
             case PURPLE: return R.color.purpleDark;
             case YELLOW: return R.color.yellowDark;
             default: return -1;
+        }
+    }
+
+    public class DownloadImageTask1 extends AsyncTask<String, Void, Bitmap> {
+        ImageView bmImage;
+
+        public DownloadImageTask1(ImageView bmImage) {
+            this.bmImage = bmImage;
+        }
+
+        protected Bitmap doInBackground(String... urls) {
+            String urldisplay = urls[0];
+            Bitmap mIcon11 = null;
+            try {
+                InputStream in = new java.net.URL(urldisplay).openStream();
+                mIcon11 = BitmapFactory.decodeStream(in);
+            } catch (Exception e) {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+            }
+            return mIcon11;
+        }
+
+        protected void onPostExecute(Bitmap result) {
+            bmImage.setImageBitmap(result);
         }
     }
 }
